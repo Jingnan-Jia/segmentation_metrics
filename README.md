@@ -33,4 +33,72 @@ $ pip install seg-metrics
 ```
 
 ## Usage
-For simple usage examples, see `surface_distance_test.py`.
+At first, import the package:
+```python
+import seg_metrics.seg_metrics as sg
+```
+
+
+### Evaluate two batch of images from two different folders
+```python
+labels = [0, 4, 5 ,6 ,7 , 8]
+gdth_path = 'data/gdth'
+pred_path = 'data/pred'
+csv_file = 'metrics.csv'
+
+sg.write_metrics(labels=labels[1:],  # exclude background
+                  gdth_path=gdth_path,
+                  pred_path=pred_path,
+                  csv_file=csv_file)
+```
+
+### Evaluate two images
+```python
+labels = [0, 4, 5 ,6 ,7 , 8]
+gdth_file = 'data/gdth.mhd'
+pred_file = 'data/pred.mhd'
+csv_file = 'metrics.csv'
+
+sg.write_metrics(labels=labels[1:],  # exclude background
+                  gdth_path=gdth_file,
+                  pred_path=pred_file,
+                  csv_file=csv_file)
+```
+
+### Evaluate two images with specific metrics
+```python
+labels = [0, 4, 5 ,6 ,7 , 8]
+gdth_file = 'data/gdth.mhd'
+pred_file = 'data/pred.mhd'
+csv_file = 'metrics.csv'
+
+sg.write_metrics(labels=labels[1:],  # exclude background
+                  gdth_path=gdth_file,
+                  pred_path=pred_file,
+                  csv_file=csv_file,
+                  metrics=['dice', 'hd'])
+# for only one metric
+sg.write_metrics(labels=labels[1:],  # exclude background
+                  gdth_path=gdth_file,
+                  pred_path=pred_file,
+                  csv_file=csv_file,
+                  metrics='msd')  
+```
+By passing the following parameters to select specific metrics.
+
+```python
+- dice:     Dice (F-1)
+- jaccard:  Jaccard
+- precision:    Precision
+- recall:   Recall
+- fpr:      False positive rate
+- fnr:      False negtive rate
+- vs:       Volume similarity
+
+- hd:       Hausdorff distance
+- hd95:     Hausdorff distance 95% percentile
+- msd:      Mean (Average) surface distance
+- mdsd:     Median surface distance
+- stdsd:    Std surface distance
+```
+

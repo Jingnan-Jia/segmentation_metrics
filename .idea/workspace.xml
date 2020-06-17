@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../segmentation_metrics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/Ordgod.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/Ordgod.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/Ordgod.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/Ordgod.egg-info/top_level.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../segmentation_metrics/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/build/lib/example_pkg/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/seg_metrics/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/dist/Ordgod-0.0.1-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/dist/Ordgod-0.0.1.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/example_pkg/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/seg_metrics/seg_metrics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/seg_metrics/seg_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/seg_metrics/seg_metrics.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -132,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592424146477</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Seconda commit, update readme">
+      <created>1592428498277</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1592428498277</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -148,6 +146,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init repo" />
-    <option name="LAST_COMMIT_MESSAGE" value="init repo" />
+    <MESSAGE value="Seconda commit, update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seconda commit, update readme" />
   </component>
 </project>

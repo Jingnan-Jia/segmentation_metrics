@@ -263,7 +263,7 @@ def one_hot_encode_3D(patch, labels):
 
 
 
-def write_all_metrics(labels, gdth_path, pred_path, csv_file):
+def write_metrics(labels, gdth_path, pred_path, csv_file):
     """
 
     :param labels:  exclude background
@@ -299,7 +299,7 @@ def main():
     pred_path = 'data/pred'
     csv_file = 'metrics.csv'
 
-    write_all_metrics(labels=labels[1:],  # exclude background
+    write_metrics(labels=labels[1:],  # exclude background
                       gdth_path=gdth_path,
                       pred_path=pred_path,
                       csv_file=csv_file)
