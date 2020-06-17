@@ -1,7 +1,0 @@
-README.md
-setup.py
-Ordgod.egg-info/PKG-INFO
-Ordgod.egg-info/SOURCES.txt
-Ordgod.egg-info/dependency_links.txt
-Ordgod.egg-info/top_level.txt
-example_pkg/__init__.py

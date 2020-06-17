@@ -5,13 +5,13 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="seg_metrics", # Replace with your own username
-    version="0.0.1",
+    version="0.0.2",
     author="Jingnan",
     author_email="jiajingnan2222@gmail.com",
     description="A package to compute different segmentation metrics.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/Ordgod/segmentation_metrics",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
