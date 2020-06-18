@@ -1,6 +1,7 @@
 # Segmentaion Metrics Package
 
-This is a simple package to compute different metrics for **Medical** image segmentation.
+This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd` or `.nrrd`), and write them to csv file.
+
 
 ## Summary
 To assess the segmentation performance, there are several different methods. Two main methods are volume-based metrics and distance-based metrics.
@@ -18,7 +19,7 @@ This library computes the following performance metrics for segmentation:
 - Volume similarity
 - 
 
-### Surface Distance based metrics
+### Surface Distance based metrics (with spacing as default)
 - Hausdorff distance
 - Hausdorff distance 95% percentile
 - Mean (Average) surface distance
@@ -39,18 +40,20 @@ import seg_metrics.seg_metrics as sg
 ```
 
 
-### Evaluate two batch of images from two different folders
+### Evaluate two batch of images with same filenames from two different folders
 ```python
 labels = [0, 4, 5 ,6 ,7 , 8]
 gdth_path = 'data/gdth'
 pred_path = 'data/pred'
 csv_file = 'metrics.csv'
 
-sg.write_metrics(labels=labels[1:],  # exclude background
+metrics = sg.write_metrics(labels=labels[1:],  # exclude background
                   gdth_path=gdth_path,
                   pred_path=pred_path,
                   csv_file=csv_file)
+print(metrics)
 ```
+After runing the above codes, you can get a dict `metrics` which contains all the metrics. Also you can find a csv file containing all metrics in the same directory.
 
 ### Evaluate two images
 ```python
@@ -59,7 +62,7 @@ gdth_file = 'data/gdth.mhd'
 pred_file = 'data/pred.mhd'
 csv_file = 'metrics.csv'
 
-sg.write_metrics(labels=labels[1:],  # exclude background
+metrics = sg.write_metrics(labels=labels[1:],  # exclude background
                   gdth_path=gdth_file,
                   pred_path=pred_file,
                   csv_file=csv_file)
@@ -72,13 +75,13 @@ gdth_file = 'data/gdth.mhd'
 pred_file = 'data/pred.mhd'
 csv_file = 'metrics.csv'
 
-sg.write_metrics(labels=labels[1:],  # exclude background
+metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
                   gdth_path=gdth_file,
                   pred_path=pred_file,
                   csv_file=csv_file,
                   metrics=['dice', 'hd'])
 # for only one metric
-sg.write_metrics(labels=labels[1:],  # exclude background
+metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
                   gdth_path=gdth_file,
                   pred_path=pred_file,
                   csv_file=csv_file,
@@ -101,4 +104,20 @@ By passing the following parameters to select specific metrics.
 - mdsd:     Median surface distance
 - stdsd:    Std surface distance
 ```
+
+For example:
+```python
+labels = [1]
+gdth_file = 'data/gdth.mhd'
+pred_file = 'data/pred.mhd'
+csv_file = 'metrics.csv'
+
+metrics = sg.write_metrics(labels, gdth_file, pred_file, csv_file, metrics=['dice', 'hd95'])
+dice = metrics['dice']
+hd95 = metrics['hd95']
+```
+
+
+
+
 
