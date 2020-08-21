@@ -126,7 +126,7 @@ If this repository helps you in anyway, show your love ❤️ by putting a ⭐ o
         author = {Jingnan Jia},
         url    = {https://github.com/Ordgod/segmentation_metrics},
         year   = {2020},
-        doi = {10.2307/2346178}
+        doi = {10.5281/zenodo.3995075}
     }
 
 
