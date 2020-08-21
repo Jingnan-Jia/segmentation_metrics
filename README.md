@@ -1,4 +1,4 @@
-# Segmentaion Metrics Package
+# Segmentaion Metrics Package [![DOI](https://zenodo.org/badge/273067948.svg)](https://zenodo.org/badge/latestdoi/273067948)
 
 This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd` or `.nrrd`), and write them to csv file.
 
@@ -117,7 +117,7 @@ dice = metrics['dice']
 hd95 = metrics['hd95']
 ```
 
-[![DOI](https://zenodo.org/badge/273067948.svg)](https://zenodo.org/badge/latestdoi/273067948)
+
 
 
 
