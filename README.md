@@ -124,8 +124,8 @@ If this repository helps you in anyway, show your love ❤️ by putting a ⭐ o
     @misc{Jingnan,
         title  = {A package to compute segmentation metrics: seg-metrics},
         author = {Jingnan Jia},
-        url    = {https://github.com/Ordgod/segmentation_metrics},
-        year   = {2020},
+        url    = {https://github.com/Ordgod/segmentation_metrics}, 
+        year   = {2020}, 
         doi = {10.5281/zenodo.3995075}
     }
 
