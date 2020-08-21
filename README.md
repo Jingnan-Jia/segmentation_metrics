@@ -121,11 +121,12 @@ If this repository helps you in anyway, show your love ❤️ by putting a ⭐ o
 
 #Bibtex
 
-    @misc{
-        title  = {segmentation metrics package: seg-metrics},
+    @misc{Jingnan,
+        title  = {A package to compute segmentation metrics: seg-metrics},
         author = {Jingnan Jia},
         url    = {https://github.com/Ordgod/segmentation_metrics},
-        year   = {2020}
+        year   = {2020},
+        doi = {10.2307/2346178}
     }
 
 
