@@ -117,6 +117,16 @@ dice = metrics['dice']
 hd95 = metrics['hd95']
 ```
 
+If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. I would also appreciate it if you cite the package in your publication.
+
+#Bibtex
+
+    @misc{
+        title  = {segmentation metrics package: seg-metrics},
+        author = {Jingnan Jia},
+        url    = {https://github.com/Ordgod/segmentation_metrics},
+        year   = {2020}
+    }
 
 
 
