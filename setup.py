@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="seg_metrics", # Replace with your own username
-    version="0.0.2",
+    version="0.0.4",
     author="Jingnan",
     author_email="jiajingnan2222@gmail.com",
-    description="A package to compute different segmentation metrics.",
+    description="A package to compute different segmentation metrics for Medical images.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Ordgod/segmentation_metrics",

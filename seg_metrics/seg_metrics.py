@@ -9,7 +9,6 @@ import copy
 import PySimpleGUI as gui
 import matplotlib.pyplot as plt
 import glob
-
 # %%
 def load_itk(filename):
     '''
@@ -41,14 +40,15 @@ def load_itk(filename):
 
     return ct_scan, origin, spacing
 
+
 def get_gdth_pred_names(gdth_path, pred_path):
     gdth_files = sorted(glob.glob(gdth_path + '/*' + '.nrrd'))
-    if len(gdth_files) == 0:
-        gdth_files = sorted(glob.glob(gdth_path + '/*' + '.mhd'))
+    gdth_files.extend(sorted(glob.glob(gdth_path + '/*' + '.mhd')))
+    gdth_files.extend(sorted(glob.glob(gdth_path + '/*' + '.mha')))
 
     pred_files = sorted(glob.glob(pred_path + '/*' + '.nrrd'))
-    if len(pred_files) == 0:
-        pred_files = sorted(glob.glob(pred_path + '/*' + '.mhd'))
+    pred_files.extend(sorted(glob.glob(pred_path + '/*' + '.mhd')))
+    pred_files.extend(sorted(glob.glob(pred_path + '/*' + '.mha')))
 
     if len(gdth_files) == 0:
         raise Exception('ground truth files  are None, Please check the directories', gdth_path)

@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../segmentation_metrics/seg_metrics/seg_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/../segmentation_metrics/seg_metrics/seg_metrics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test_load_itk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seg_metrics/seg_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/seg_metrics/seg_metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,27 +22,20 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../segmentation_metrics" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1dSePkViF6bujgGS3WLtpxUnPyP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../segmentation_metrics" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="test_load_itk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="segmentation_metrics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -48,11 +43,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test_load_itk.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -61,50 +56,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="segmentation_metrics" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <module name="segmentation_metrics" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Unittests">
-      <module name="segmentation_metrics" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test_load_itk" />
+      </list>
+    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -137,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592429544954</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add function to resolve metrics_type and filename.">
+      <created>1592480014719</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1592480014719</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,11 +115,105 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init repo" />
     <MESSAGE value="Seconda commit, update readme" />
     <MESSAGE value="update readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="update readme" />
+    <MESSAGE value="add function to resolve metrics_type and filename." />
+    <option name="LAST_COMMIT_MESSAGE" value="add function to resolve metrics_type and filename." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="509" y="202" key="FileChooserDialogImpl" timestamp="1603884190665">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state x="509" y="202" key="FileChooserDialogImpl/0.0.1442.875@0.0.1442.875" timestamp="1603884190665" />
+    <state width="1437" height="201" key="GridCell.Tab.0.bottom" timestamp="1603884156720">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1437" height="201" key="GridCell.Tab.0.bottom/0.0.1442.875@0.0.1442.875" timestamp="1603884156720" />
+    <state width="1429" height="208" key="GridCell.Tab.0.bottom/0.0.1454.880@0.0.1454.880" timestamp="1603756936076" />
+    <state width="1437" height="201" key="GridCell.Tab.0.bottom/0.0.1458.872@0.0.1458.872" timestamp="1603843514632" />
+    <state width="1853" height="333" key="GridCell.Tab.0.bottom/0.0.1874.1250@0.0.1874.1250" timestamp="1603719825148" />
+    <state width="3819" height="868" key="GridCell.Tab.0.bottom/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867618" />
+    <state width="1437" height="201" key="GridCell.Tab.0.center" timestamp="1603884156692">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1437" height="201" key="GridCell.Tab.0.center/0.0.1442.875@0.0.1442.875" timestamp="1603884156692" />
+    <state width="1429" height="208" key="GridCell.Tab.0.center/0.0.1454.880@0.0.1454.880" timestamp="1603756936046" />
+    <state width="1437" height="201" key="GridCell.Tab.0.center/0.0.1458.872@0.0.1458.872" timestamp="1603843514547" />
+    <state width="1853" height="333" key="GridCell.Tab.0.center/0.0.1874.1250@0.0.1874.1250" timestamp="1603719824859" />
+    <state width="3819" height="868" key="GridCell.Tab.0.center/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867533" />
+    <state width="1437" height="201" key="GridCell.Tab.0.left" timestamp="1603884156579">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1437" height="201" key="GridCell.Tab.0.left/0.0.1442.875@0.0.1442.875" timestamp="1603884156579" />
+    <state width="1429" height="208" key="GridCell.Tab.0.left/0.0.1454.880@0.0.1454.880" timestamp="1603756936031" />
+    <state width="1437" height="201" key="GridCell.Tab.0.left/0.0.1458.872@0.0.1458.872" timestamp="1603843514522" />
+    <state width="1853" height="333" key="GridCell.Tab.0.left/0.0.1874.1250@0.0.1874.1250" timestamp="1603719824795" />
+    <state width="3819" height="868" key="GridCell.Tab.0.left/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867519" />
+    <state width="1437" height="201" key="GridCell.Tab.0.right" timestamp="1603884156705">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1437" height="201" key="GridCell.Tab.0.right/0.0.1442.875@0.0.1442.875" timestamp="1603884156705" />
+    <state width="1429" height="208" key="GridCell.Tab.0.right/0.0.1454.880@0.0.1454.880" timestamp="1603756936061" />
+    <state width="1437" height="201" key="GridCell.Tab.0.right/0.0.1458.872@0.0.1458.872" timestamp="1603843514614" />
+    <state width="1853" height="333" key="GridCell.Tab.0.right/0.0.1874.1250@0.0.1874.1250" timestamp="1603719825025" />
+    <state width="3819" height="868" key="GridCell.Tab.0.right/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867604" />
+    <state width="1421" height="267" key="GridCell.Tab.1.bottom" timestamp="1603884130066">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1421" height="267" key="GridCell.Tab.1.bottom/0.0.1442.875@0.0.1442.875" timestamp="1603884130066" />
+    <state width="1429" height="258" key="GridCell.Tab.1.bottom/0.0.1454.880@0.0.1454.880" timestamp="1603755853042" />
+    <state width="1437" height="330" key="GridCell.Tab.1.bottom/0.0.1458.872@0.0.1458.872" timestamp="1603841628565" />
+    <state width="3819" height="868" key="GridCell.Tab.1.bottom/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867360" />
+    <state width="1421" height="267" key="GridCell.Tab.1.center" timestamp="1603884130031">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1421" height="267" key="GridCell.Tab.1.center/0.0.1442.875@0.0.1442.875" timestamp="1603884130031" />
+    <state width="1429" height="258" key="GridCell.Tab.1.center/0.0.1454.880@0.0.1454.880" timestamp="1603755853014" />
+    <state width="1437" height="330" key="GridCell.Tab.1.center/0.0.1458.872@0.0.1458.872" timestamp="1603841628538" />
+    <state width="3819" height="868" key="GridCell.Tab.1.center/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867332" />
+    <state width="1421" height="267" key="GridCell.Tab.1.left" timestamp="1603884130005">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1421" height="267" key="GridCell.Tab.1.left/0.0.1442.875@0.0.1442.875" timestamp="1603884130005" />
+    <state width="1429" height="258" key="GridCell.Tab.1.left/0.0.1454.880@0.0.1454.880" timestamp="1603755852998" />
+    <state width="1437" height="330" key="GridCell.Tab.1.left/0.0.1458.872@0.0.1458.872" timestamp="1603841628476" />
+    <state width="3819" height="868" key="GridCell.Tab.1.left/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867315" />
+    <state width="1421" height="267" key="GridCell.Tab.1.right" timestamp="1603884130048">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state width="1421" height="267" key="GridCell.Tab.1.right/0.0.1442.875@0.0.1442.875" timestamp="1603884130048" />
+    <state width="1429" height="258" key="GridCell.Tab.1.right/0.0.1454.880@0.0.1454.880" timestamp="1603755853028" />
+    <state width="1437" height="330" key="GridCell.Tab.1.right/0.0.1458.872@0.0.1458.872" timestamp="1603841628551" />
+    <state width="3819" height="868" key="GridCell.Tab.1.right/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867346" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/seg_metrics/seg_metrics.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

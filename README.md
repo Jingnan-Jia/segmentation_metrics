@@ -1,6 +1,6 @@
 # Segmentaion Metrics Package
 
-This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd` or `.nrrd`), and write them to csv file.
+This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha` or `.nrrd`), and write them to csv file.
 
 
 ## Summary
@@ -53,7 +53,7 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background
                   csv_file=csv_file)
 print(metrics)
 ```
-After runing the above codes, you can get a dict `metrics` which contains all the metrics. Also you can find a csv file containing all metrics in the same directory.
+After runing the above codes, you can get a dict `metrics` which contains all the metrics. Also you can find a `.csv` file containing all metrics in the same directory.
 
 ### Evaluate two images
 ```python
