@@ -1,4 +1,4 @@
-# Segmentaion Metrics Package
+# Segmentaion Metrics Package [![DOI](https://zenodo.org/badge/273067948.svg)](https://zenodo.org/badge/latestdoi/273067948)
 
 This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha` or `.nrrd`), and write them to csv file.
 
@@ -116,6 +116,18 @@ metrics = sg.write_metrics(labels, gdth_file, pred_file, csv_file, metrics=['dic
 dice = metrics['dice']
 hd95 = metrics['hd95']
 ```
+
+If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. I would also appreciate it if you cite the package in your publication.
+
+#Bibtex
+
+    @misc{Jingnan,
+        title  = {A package to compute segmentation metrics: seg-metrics},
+        author = {Jingnan Jia},
+        url    = {https://github.com/Ordgod/segmentation_metrics}, 
+        year   = {2020}, 
+        doi = {10.5281/zenodo.3995075}
+    }
 
 
 
