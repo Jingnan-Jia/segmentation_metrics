@@ -1,5 +1,5 @@
 # Segmentaion Metrics Package [![DOI](https://zenodo.org/badge/273067948.svg)](https://zenodo.org/badge/latestdoi/273067948)
-https://img.shields.io/github/v/release/Ordgod/segmentation_metrics
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Ordgod/segmentation_metrics)
 
 This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha` or `.nrrd`), and write them to csv file.
 
