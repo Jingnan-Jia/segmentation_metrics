@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/test_load_itk.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/segmentation_metrics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/segmentation_metrics.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seg_metrics/seg_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/seg_metrics/seg_metrics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_load_itk.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_load_itk.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +51,28 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.test_load_itk">
+    <configuration name="seg_metrics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="segmentation_metrics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/seg_metrics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/seg_metrics/seg_metrics.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_load_itk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="segmentation_metrics" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -59,6 +97,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.test_load_itk" />
+        <item itemvalue="Python.seg_metrics" />
       </list>
     </recent_temporary>
   </component>
@@ -102,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592480014719</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add unit test, add the support to .mha files.">
+      <created>1603889715529</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1603889715529</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,96 +168,107 @@
     <MESSAGE value="Seconda commit, update readme" />
     <MESSAGE value="update readme" />
     <MESSAGE value="add function to resolve metrics_type and filename." />
-    <option name="LAST_COMMIT_MESSAGE" value="add function to resolve metrics_type and filename." />
+    <MESSAGE value="add unit test, add the support to .mha files." />
+    <option name="LAST_COMMIT_MESSAGE" value="add unit test, add the support to .mha files." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="509" y="202" key="FileChooserDialogImpl" timestamp="1603884190665">
+    <state x="193" y="110" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603926247923">
+      <screen x="0" y="0" width="1454" height="880" />
+    </state>
+    <state x="193" y="110" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1454.880@0.0.1454.880" timestamp="1603926247923" />
+    <state x="198" y="65" width="1032" height="737" key="CommitChangelistDialog2" timestamp="1603889715015">
       <screen x="0" y="0" width="1442" height="875" />
     </state>
-    <state x="509" y="202" key="FileChooserDialogImpl/0.0.1442.875@0.0.1442.875" timestamp="1603884190665" />
-    <state width="1437" height="201" key="GridCell.Tab.0.bottom" timestamp="1603884156720">
+    <state x="198" y="65" width="1032" height="737" key="CommitChangelistDialog2/0.0.1442.875@0.0.1442.875" timestamp="1603889715015" />
+    <state x="66" y="129" width="1242" height="612" key="DiffContextDialog" timestamp="1603890306795">
       <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state x="66" y="129" width="1242" height="612" key="DiffContextDialog/0.0.1442.875@0.0.1442.875" timestamp="1603890306795" />
+    <state x="513" y="203" key="FileChooserDialogImpl" timestamp="1603926857506">
+      <screen x="0" y="0" width="1454" height="880" />
+    </state>
+    <state x="509" y="202" key="FileChooserDialogImpl/0.0.1442.875@0.0.1442.875" timestamp="1603894714999" />
+    <state x="513" y="203" key="FileChooserDialogImpl/0.0.1454.880@0.0.1454.880" timestamp="1603926857506" />
+    <state width="1811" height="362" key="GridCell.Tab.0.bottom" timestamp="1603996732160">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1437" height="201" key="GridCell.Tab.0.bottom/0.0.1442.875@0.0.1442.875" timestamp="1603884156720" />
-    <state width="1429" height="208" key="GridCell.Tab.0.bottom/0.0.1454.880@0.0.1454.880" timestamp="1603756936076" />
+    <state width="1421" height="267" key="GridCell.Tab.0.bottom/0.0.1454.880@0.0.1454.880" timestamp="1603926551494" />
     <state width="1437" height="201" key="GridCell.Tab.0.bottom/0.0.1458.872@0.0.1458.872" timestamp="1603843514632" />
+    <state width="1811" height="362" key="GridCell.Tab.0.bottom/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732160" />
     <state width="1853" height="333" key="GridCell.Tab.0.bottom/0.0.1874.1250@0.0.1874.1250" timestamp="1603719825148" />
     <state width="3819" height="868" key="GridCell.Tab.0.bottom/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867618" />
-    <state width="1437" height="201" key="GridCell.Tab.0.center" timestamp="1603884156692">
-      <screen x="0" y="0" width="1442" height="875" />
+    <state width="1811" height="362" key="GridCell.Tab.0.center" timestamp="1603996732133">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1437" height="201" key="GridCell.Tab.0.center/0.0.1442.875@0.0.1442.875" timestamp="1603884156692" />
-    <state width="1429" height="208" key="GridCell.Tab.0.center/0.0.1454.880@0.0.1454.880" timestamp="1603756936046" />
+    <state width="1421" height="267" key="GridCell.Tab.0.center/0.0.1454.880@0.0.1454.880" timestamp="1603926551459" />
     <state width="1437" height="201" key="GridCell.Tab.0.center/0.0.1458.872@0.0.1458.872" timestamp="1603843514547" />
+    <state width="1811" height="362" key="GridCell.Tab.0.center/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732133" />
     <state width="1853" height="333" key="GridCell.Tab.0.center/0.0.1874.1250@0.0.1874.1250" timestamp="1603719824859" />
     <state width="3819" height="868" key="GridCell.Tab.0.center/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867533" />
-    <state width="1437" height="201" key="GridCell.Tab.0.left" timestamp="1603884156579">
-      <screen x="0" y="0" width="1442" height="875" />
+    <state width="1811" height="362" key="GridCell.Tab.0.left" timestamp="1603996732116">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1437" height="201" key="GridCell.Tab.0.left/0.0.1442.875@0.0.1442.875" timestamp="1603884156579" />
-    <state width="1429" height="208" key="GridCell.Tab.0.left/0.0.1454.880@0.0.1454.880" timestamp="1603756936031" />
+    <state width="1421" height="267" key="GridCell.Tab.0.left/0.0.1454.880@0.0.1454.880" timestamp="1603926551438" />
     <state width="1437" height="201" key="GridCell.Tab.0.left/0.0.1458.872@0.0.1458.872" timestamp="1603843514522" />
+    <state width="1811" height="362" key="GridCell.Tab.0.left/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732116" />
     <state width="1853" height="333" key="GridCell.Tab.0.left/0.0.1874.1250@0.0.1874.1250" timestamp="1603719824795" />
     <state width="3819" height="868" key="GridCell.Tab.0.left/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867519" />
-    <state width="1437" height="201" key="GridCell.Tab.0.right" timestamp="1603884156705">
-      <screen x="0" y="0" width="1442" height="875" />
+    <state width="1811" height="362" key="GridCell.Tab.0.right" timestamp="1603996732145">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1437" height="201" key="GridCell.Tab.0.right/0.0.1442.875@0.0.1442.875" timestamp="1603884156705" />
-    <state width="1429" height="208" key="GridCell.Tab.0.right/0.0.1454.880@0.0.1454.880" timestamp="1603756936061" />
+    <state width="1421" height="267" key="GridCell.Tab.0.right/0.0.1454.880@0.0.1454.880" timestamp="1603926551478" />
     <state width="1437" height="201" key="GridCell.Tab.0.right/0.0.1458.872@0.0.1458.872" timestamp="1603843514614" />
+    <state width="1811" height="362" key="GridCell.Tab.0.right/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732145" />
     <state width="1853" height="333" key="GridCell.Tab.0.right/0.0.1874.1250@0.0.1874.1250" timestamp="1603719825025" />
     <state width="3819" height="868" key="GridCell.Tab.0.right/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867604" />
-    <state width="1421" height="267" key="GridCell.Tab.1.bottom" timestamp="1603884130066">
-      <screen x="0" y="0" width="1442" height="875" />
+    <state width="1811" height="362" key="GridCell.Tab.1.bottom" timestamp="1603996732233">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1421" height="267" key="GridCell.Tab.1.bottom/0.0.1442.875@0.0.1442.875" timestamp="1603884130066" />
-    <state width="1429" height="258" key="GridCell.Tab.1.bottom/0.0.1454.880@0.0.1454.880" timestamp="1603755853042" />
+    <state width="1421" height="267" key="GridCell.Tab.1.bottom/0.0.1454.880@0.0.1454.880" timestamp="1603926516104" />
     <state width="1437" height="330" key="GridCell.Tab.1.bottom/0.0.1458.872@0.0.1458.872" timestamp="1603841628565" />
+    <state width="1811" height="362" key="GridCell.Tab.1.bottom/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732233" />
     <state width="3819" height="868" key="GridCell.Tab.1.bottom/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867360" />
-    <state width="1421" height="267" key="GridCell.Tab.1.center" timestamp="1603884130031">
-      <screen x="0" y="0" width="1442" height="875" />
+    <state width="1811" height="362" key="GridCell.Tab.1.center" timestamp="1603996732184">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1421" height="267" key="GridCell.Tab.1.center/0.0.1442.875@0.0.1442.875" timestamp="1603884130031" />
-    <state width="1429" height="258" key="GridCell.Tab.1.center/0.0.1454.880@0.0.1454.880" timestamp="1603755853014" />
+    <state width="1421" height="267" key="GridCell.Tab.1.center/0.0.1454.880@0.0.1454.880" timestamp="1603926516076" />
     <state width="1437" height="330" key="GridCell.Tab.1.center/0.0.1458.872@0.0.1458.872" timestamp="1603841628538" />
+    <state width="1811" height="362" key="GridCell.Tab.1.center/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732184" />
     <state width="3819" height="868" key="GridCell.Tab.1.center/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867332" />
-    <state width="1421" height="267" key="GridCell.Tab.1.left" timestamp="1603884130005">
-      <screen x="0" y="0" width="1442" height="875" />
+    <state width="1811" height="362" key="GridCell.Tab.1.left" timestamp="1603996732172">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1421" height="267" key="GridCell.Tab.1.left/0.0.1442.875@0.0.1442.875" timestamp="1603884130005" />
-    <state width="1429" height="258" key="GridCell.Tab.1.left/0.0.1454.880@0.0.1454.880" timestamp="1603755852998" />
+    <state width="1421" height="267" key="GridCell.Tab.1.left/0.0.1454.880@0.0.1454.880" timestamp="1603926516061" />
     <state width="1437" height="330" key="GridCell.Tab.1.left/0.0.1458.872@0.0.1458.872" timestamp="1603841628476" />
+    <state width="1811" height="362" key="GridCell.Tab.1.left/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732172" />
     <state width="3819" height="868" key="GridCell.Tab.1.left/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867315" />
-    <state width="1421" height="267" key="GridCell.Tab.1.right" timestamp="1603884130048">
-      <screen x="0" y="0" width="1442" height="875" />
+    <state width="1811" height="362" key="GridCell.Tab.1.right" timestamp="1603996732220">
+      <screen x="0" y="0" width="1832" height="1109" />
     </state>
     <state width="1421" height="267" key="GridCell.Tab.1.right/0.0.1442.875@0.0.1442.875" timestamp="1603884130048" />
-    <state width="1429" height="258" key="GridCell.Tab.1.right/0.0.1454.880@0.0.1454.880" timestamp="1603755853028" />
+    <state width="1421" height="267" key="GridCell.Tab.1.right/0.0.1454.880@0.0.1454.880" timestamp="1603926516091" />
     <state width="1437" height="330" key="GridCell.Tab.1.right/0.0.1458.872@0.0.1458.872" timestamp="1603841628551" />
+    <state width="1811" height="362" key="GridCell.Tab.1.right/0.0.1832.1109@0.0.1832.1109" timestamp="1603996732220" />
     <state width="3819" height="868" key="GridCell.Tab.1.right/0.0.3840.2400@0.0.3840.2400" timestamp="1603812867346" />
+    <state x="321" y="180" key="Vcs.Push.Dialog.v2" timestamp="1603889723696">
+      <screen x="0" y="0" width="1442" height="875" />
+    </state>
+    <state x="321" y="180" key="Vcs.Push.Dialog.v2/0.0.1442.875@0.0.1442.875" timestamp="1603889723696" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
-          <line>22</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
-          <line>58</line>
+          <line>35</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/seg_metrics/seg_metrics.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
