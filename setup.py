@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="seg_metrics", # Replace with your own username
-    version="0.0.5",
+    version="0.0.7",
     author="Jingnan",
     author_email="jiajingnan2222@gmail.com",
     description="A package to compute different segmentation metrics for Medical images.",
@@ -19,4 +19,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=['jjnsegutils'],
 )

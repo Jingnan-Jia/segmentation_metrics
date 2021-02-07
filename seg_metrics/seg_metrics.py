@@ -1,5 +1,3 @@
-
-
 import numpy as np
 import os
 import SimpleITK as sitk
@@ -22,7 +20,8 @@ def show_itk(itk, idx):
 
     return None
 
-def computeQualityMeasures(lP, lT, spacing, metrics_type):
+
+def computeQualityMeasures(lP, lT, spacing, metrics_type=None):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -34,13 +33,11 @@ def computeQualityMeasures(lP, lT, spacing, metrics_type):
     labelPred = sitk.GetImageFromArray(lP, isVector=False)
     labelPred.SetSpacing(spacing)
     labelTrue = sitk.GetImageFromArray(lT, isVector=False)
-    labelTrue.SetSpacing(spacing) # spacing order (x, y, z)
-
-
+    labelTrue.SetSpacing(spacing)  # spacing order (x, y, z)
 
     voxel_metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs']
     distance_metrics = ['hd', 'hd95', 'msd', 'mdsd', 'stdsd']
-
+    metrics_type = set([]) if metrics_type is None else set(metrics_type)
     # to save time, we need to determine which metrics we need to compute
     if set(voxel_metrics).intersection(metrics_type) or not metrics_type:
         pred = lP.astype(int)  # float data does not support bit_and and bit_or
@@ -141,13 +138,13 @@ def computeQualityMeasures(lP, lT, spacing, metrics_type):
         quality["95_surface_distance"] = np.percentile(all_surface_distances, 95)
         quality["Hausdorff"] = np.max(all_surface_distances)
 
-
     return quality
 
 
-def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type):
+def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None):
     """
 
+    :param metrics_type:
     :param labels: not include background, e.g. [4,5,6,7,8] or [1]
     :param gdth: shape: (x, y, z, channels), channels is equal to len(labels) or equal to len(labels)+1 (background)
     :param pred: the same as above
@@ -155,7 +152,6 @@ def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type):
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
     metrics_parameters_dict = {}
-
 
     Hausdorff_list = []
     Dice_list = []
@@ -177,7 +173,6 @@ def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type):
 
         metrics = computeQualityMeasures(pred_per, gdth_per, spacing=spacing, metrics_type=metrics_type)
         print(metrics)
-
 
         Dice_list.append(metrics["dice"])
         Jaccard_list.append(metrics["jaccard"])
@@ -206,8 +201,7 @@ def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type):
                                'stdsd': std_surface_dis_list,
                                'hd95': nine5_surface_dis_list}
 
-
-    metrics_dict = {k:v for k, v in metrics_dict_all_labels.items() if v}  # remove empty values
+    metrics_dict = {k: v for k, v in metrics_dict_all_labels.items() if v}  # remove empty values
 
     return metrics_dict
 
@@ -222,21 +216,20 @@ def write_metrics(labels, gdth_path, pred_path, csv_file, metrics=None):
     :return: metrics_dict_all_labels: a dict which save metrics
     """
     print('start calculate all metrics (volume and distance) and write them to csv')
-    if gdth_path.split('.')[-1] in ['mhd', 'nrrd']:  # gdth is a file instead of a directory
+    if '/' not in gdth_path.split('.')[-1]:  # gdth is a file instead of a directory
         gdth_names, pred_names = [gdth_path], [pred_path]
     else:
         gdth_names, pred_names = get_gdth_pred_names(gdth_path, pred_path)
 
     for gdth_name, pred_name in zip(gdth_names, pred_names):
-
         gdth, gdth_origin, gdth_spacing = load_itk(gdth_name)
         pred, pred_origin, pred_spacing = load_itk(pred_name)
 
-
-        gdth = one_hot_encode_3D(gdth, labels=labels)
-        pred = one_hot_encode_3D(pred, labels=labels)
+        gdth = one_hot_encode_3d(gdth, labels=labels)
+        pred = one_hot_encode_3d(pred, labels=labels)
         print('start calculate all metrics for image: ', pred_name)
-        metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1], metrics_type=metrics)
+        metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
+                                                              metrics_type=metrics)
         metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
         data_frame = pd.DataFrame(metrics_dict_all_labels)
         data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
@@ -245,16 +238,16 @@ def write_metrics(labels, gdth_path, pred_path, csv_file, metrics=None):
 
 
 def main():
-
-    labels = [0, 4, 5 ,6 ,7 , 8]
+    labels = [0, 4, 5, 6, 7, 8]
     gdth_path = 'data/gdth'
     pred_path = 'data/pred'
     csv_file = 'metrics.csv'
 
     write_metrics(labels=labels[1:],  # exclude background
-                      gdth_path=gdth_path,
-                      pred_path=pred_path,
-                      csv_file=csv_file)
+                  gdth_path=gdth_path,
+                  pred_path=pred_path,
+                  csv_file=csv_file)
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()

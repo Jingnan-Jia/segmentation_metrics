@@ -1,6 +1,6 @@
 # Segmentaion Metrics Package [![DOI](https://zenodo.org/badge/273067948.svg)](https://zenodo.org/badge/latestdoi/273067948)
 
-This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha` or `.nrrd`), and write them to csv file.
+This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha`, `.nii`, `.nii.gz` or `.nrrd`), and write them to csv file.
 
 
 ## Summary
