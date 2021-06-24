@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="add type hinting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +148,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1592422900021</updated>
-      <workItem from="1624537247057" duration="2317000" />
+      <workItem from="1624537247057" duration="3743000" />
     </task>
     <task id="LOCAL-00001" summary="init repo">
       <created>1592424146477</created>
@@ -205,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624539025015</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add type hinting">
+      <created>1624540830648</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1624540830649</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,10 +243,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="add type hinting" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="372" y="147" key="Vcs.Push.Dialog.v2" timestamp="1624539457829">
+    <state x="372" y="147" key="Vcs.Push.Dialog.v2" timestamp="1624540895388">
       <screen x="0" y="0" width="1483" height="769" />
     </state>
-    <state x="372" y="147" key="Vcs.Push.Dialog.v2/0.0.1483.769@0.0.1483.769" timestamp="1624539457829" />
+    <state x="372" y="147" key="Vcs.Push.Dialog.v2/0.0.1483.769@0.0.1483.769" timestamp="1624540895388" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
