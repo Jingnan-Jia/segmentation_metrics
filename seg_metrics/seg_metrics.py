@@ -21,7 +21,7 @@ def show_itk(itk, idx):
     return None
 
 
-def computeQualityMeasures(lP, lT, spacing, metrics_type=None):
+def computeQualityMeasures(lP: np.Array, lT: np.Array, spacing: np.Array, metrics_type=None):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -141,7 +141,7 @@ def computeQualityMeasures(lP, lT, spacing, metrics_type=None):
     return quality
 
 
-def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None):
+def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None) -> dict[str, list]:
     """
 
     :param metrics_type:
@@ -151,7 +151,6 @@ def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None):
     :param spacing: spacing order should be (x, y, z) !!!
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
-    metrics_parameters_dict = {}
 
     Hausdorff_list = []
     Dice_list = []
@@ -167,7 +166,7 @@ def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None):
     false_negtive_rate_list = []
 
     for i, label in enumerate(labels):
-        print('start get metrics for label: ', label)
+        print('start to get metrics for label: ', label)
         pred_per = pred[..., i]  # select onlabel
         gdth_per = gdth[..., i]
 
@@ -215,8 +214,8 @@ def write_metrics(labels, gdth_path, pred_path, csv_file, metrics=None):
     :param csv_file: filename to save the metrics
     :return: metrics_dict_all_labels: a dict which save metrics
     """
-    print('start calculate all metrics (volume and distance) and write them to csv')
-    if '/' not in gdth_path.split('.')[-1]:  # gdth is a file instead of a directory
+    print('start to calculate metrics (volume or distance) and write them to csv')
+    if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
         gdth_names, pred_names = [gdth_path], [pred_path]
     else:
         gdth_names, pred_names = get_gdth_pred_names(gdth_path, pred_path)
@@ -227,12 +226,13 @@ def write_metrics(labels, gdth_path, pred_path, csv_file, metrics=None):
 
         gdth = one_hot_encode_3d(gdth, labels=labels)
         pred = one_hot_encode_3d(pred, labels=labels)
-        print('start calculate all metrics for image: ', pred_name)
+        print('start to calculate metrics for image: ', pred_name)
         metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
                                                               metrics_type=metrics)
         metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
         data_frame = pd.DataFrame(metrics_dict_all_labels)
         data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
+    print('Metrics were saved at : ', csv_file)
 
     return metrics_dict_all_labels
 
