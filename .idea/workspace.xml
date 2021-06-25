@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="add type hinting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seg_metrics/seg_metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/seg_metrics/seg_metrics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +149,8 @@
       <option name="presentableId" value="Default" />
       <updated>1592422900021</updated>
       <workItem from="1624537247057" duration="3743000" />
+      <workItem from="1624567272431" duration="497000" />
+      <workItem from="1624658921875" duration="339000" />
     </task>
     <task id="LOCAL-00001" summary="init repo">
       <created>1592424146477</created>
