@@ -4,4 +4,3 @@ torch
 seg-metrics
 jjnsegutils
 pandas
-PySimpleGUI
