@@ -3,10 +3,5 @@ numpy
 torch
 seg-metrics
 jjnsegutils
-importlib
-os
-unittest
-sys
 pandas
-copy
 PySimpleGUI
