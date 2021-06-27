@@ -4,7 +4,6 @@ import SimpleITK as sitk
 # import nibabel as nib
 import pandas as pd
 import copy
-import PySimpleGUI as gui
 import matplotlib.pyplot as plt
 import glob
 import sys
