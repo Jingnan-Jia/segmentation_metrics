@@ -1,4 +1,5 @@
 SimpleITK
 numpy
 torch
-
+seg-metrics
+jjnsegutils
