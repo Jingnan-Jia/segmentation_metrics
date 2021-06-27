@@ -19,8 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="add model name in __all__">
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+    <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="v1.0.4">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,17 @@
         <option value="Python Script" />
         <option value="Python Unit Test" />
       </list>
+    </option>
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
     </option>
   </component>
   <component name="Git.Settings">
@@ -55,6 +67,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="RunManager" selected="Python.collect_statistics">
     <configuration name="collect_statistics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -149,7 +162,8 @@
       <updated>1592422900021</updated>
       <workItem from="1624537247057" duration="3743000" />
       <workItem from="1624567272431" duration="497000" />
-      <workItem from="1624658921875" duration="382000" />
+      <workItem from="1624658921875" duration="1017000" />
+      <workItem from="1624790330887" duration="4778000" />
     </task>
     <task id="LOCAL-00001" summary="init repo">
       <created>1592424146477</created>
@@ -221,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1624659278576</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="v1.0.4">
+      <created>1624659312342</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1624659312342</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,13 +270,20 @@
     <MESSAGE value="add the support of .nii and .nii.gz" />
     <MESSAGE value="add type hinting" />
     <MESSAGE value="add model name in __all__" />
-    <option name="LAST_COMMIT_MESSAGE" value="add model name in __all__" />
+    <MESSAGE value="v1.0.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="v1.0.4" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="372" y="147" key="Vcs.Push.Dialog.v2" timestamp="1624540895388">
-      <screen x="0" y="0" width="1483" height="769" />
+    <state x="323" y="47" key="SettingsEditor" timestamp="1624793282607">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="318" y="41" key="SettingsEditor/0.0.1512.759@0.0.1512.759" timestamp="1624659876272" />
+    <state x="323" y="47" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1624793282607" />
+    <state x="379" y="145" key="Vcs.Push.Dialog.v2" timestamp="1624659881091">
+      <screen x="0" y="0" width="1512" height="759" />
     </state>
     <state x="372" y="147" key="Vcs.Push.Dialog.v2/0.0.1483.769@0.0.1483.769" timestamp="1624540895388" />
+    <state x="379" y="145" key="Vcs.Push.Dialog.v2/0.0.1512.759@0.0.1512.759" timestamp="1624659881091" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -284,6 +312,16 @@
           <url>file://$PROJECT_DIR$/../e2e_new/collect_statistics.py</url>
           <line>42</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_load_itk.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

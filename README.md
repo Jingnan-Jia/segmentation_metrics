@@ -18,7 +18,6 @@ This library computes the following performance metrics for segmentation:
 - False positive rate
 - False negtive rate
 - Volume similarity
-- 
 
 ### Surface Distance based metrics (with spacing as default)
 - Hausdorff distance
