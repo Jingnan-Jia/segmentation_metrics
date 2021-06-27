@@ -3,7 +3,7 @@ numpy
 torch
 seg-metrics
 jjnsegutils
-glob
+glob3
 importlib
 os
 unittest
