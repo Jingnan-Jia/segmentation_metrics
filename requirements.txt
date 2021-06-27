@@ -3,3 +3,11 @@ numpy
 torch
 seg-metrics
 jjnsegutils
+glob
+importlib
+os
+unittest
+sys
+pandas
+copy
+PySimpleGUI
