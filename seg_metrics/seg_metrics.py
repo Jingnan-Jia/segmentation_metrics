@@ -21,7 +21,7 @@ def show_itk(itk, idx):
     return None
 
 
-def computeQualityMeasures(lP: np.Array, lT: np.Array, spacing: np.Array, metrics_type=None):
+def computeQualityMeasures(lP: np.ndarray, lT: np.ndarray, spacing: np.ndarray, metrics_type=None):
     """
 
     :param lP: prediction, shape (x, y, z)
