@@ -11,6 +11,11 @@ __all__ = ["write_metrics"]
 
 
 def show_itk(itk, idx):
+    """Show a 2D slice of 3D ITK image.
+
+    :param itk: ITK image
+    :param idx: index of 2D slice
+    """
     ref_surface_array = sitk.GetArrayViewFromImage(itk)
     plt.figure()
     plt.imshow(ref_surface_array[idx])
