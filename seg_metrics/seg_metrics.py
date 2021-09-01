@@ -9,8 +9,6 @@ from myutil.myutil import load_itk, get_gdth_pred_names, one_hot_encode_3d
 
 __all__ = ["write_metrics"]
 
-from typing import Dict
-
 
 def show_itk(itk, idx):
     ref_surface_array = sitk.GetArrayViewFromImage(itk)
