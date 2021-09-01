@@ -1,5 +1,6 @@
-SimpleITK
 numpy
-torch
-seg-metrics
+pandas
+matplotlib
+jjnsegutils>=0.1.6
+SimpleITK
 jjnsegutils
