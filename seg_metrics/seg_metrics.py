@@ -1,16 +1,15 @@
-import numpy as np
-import os
-import SimpleITK as sitk
-# import nibabel as nib
-import pandas as pd
 import copy
-import PySimpleGUI as gui
+import os
+from typing import Dict
+import SimpleITK as sitk
 import matplotlib.pyplot as plt
-import glob
-import sys
+import numpy as np
+import pandas as pd
 from myutil.myutil import load_itk, get_gdth_pred_names, one_hot_encode_3d
 
 __all__ = ["write_metrics"]
+
+from typing import Dict
 
 
 def show_itk(itk, idx):
@@ -22,7 +21,7 @@ def show_itk(itk, idx):
     return None
 
 
-def computeQualityMeasures(lP: np.Array, lT: np.Array, spacing: np.Array, metrics_type=None):
+def computeQualityMeasures(lP: np.ndarray, lT: np.ndarray, spacing: np.ndarray, metrics_type=None):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -142,7 +141,7 @@ def computeQualityMeasures(lP: np.Array, lT: np.Array, spacing: np.Array, metric
     return quality
 
 
-def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None) -> dict[str, list]:
+def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None) -> Dict[str, list]:
     """
 
     :param metrics_type:
@@ -222,8 +221,8 @@ def write_metrics(labels, gdth_path, pred_path, csv_file, metrics=None):
         gdth_names, pred_names = get_gdth_pred_names(gdth_path, pred_path)
 
     for gdth_name, pred_name in zip(gdth_names, pred_names):
-        gdth, gdth_origin, gdth_spacing = load_itk(gdth_name)
-        pred, pred_origin, pred_spacing = load_itk(pred_name)
+        gdth, gdth_origin, gdth_spacing = load_itk(gdth_name, require_ori_sp=True)
+        pred, pred_origin, pred_spacing = load_itk(pred_name, require_ori_sp=True)
 
         gdth = one_hot_encode_3d(gdth, labels=labels)
         pred = one_hot_encode_3d(pred, labels=labels)
