@@ -10,13 +10,13 @@ from myutil.myutil import load_itk, get_gdth_pred_names, one_hot_encode_3d
 __all__ = ["write_metrics"]
 
 
-def show_itk(itk, idx):
+def show_itk(img: sitk.Image, idx: int) -> None:
     """Show a 2D slice of 3D ITK image.
 
     :param itk: ITK image
     :param idx: index of 2D slice
     """
-    ref_surface_array = sitk.GetArrayViewFromImage(itk)
+    ref_surface_array = sitk.GetArrayViewFromImage(img)
     plt.figure()
     plt.imshow(ref_surface_array[idx])
     plt.show()
