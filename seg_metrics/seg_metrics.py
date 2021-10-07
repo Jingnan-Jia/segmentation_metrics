@@ -1,10 +1,11 @@
 import copy
 import os
-from typing import Dict
+from typing import Dict, Union, Optional, Sequence
 import SimpleITK as sitk
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import pathlib
 from myutil.myutil import load_itk, get_gdth_pred_names, one_hot_encode_3d
 
 __all__ = ["write_metrics"]
@@ -24,7 +25,10 @@ def show_itk(img: sitk.Image, idx: int) -> None:
     return None
 
 
-def computeQualityMeasures(lP: np.ndarray, lT: np.ndarray, spacing: np.ndarray, metrics_type=None):
+def computeQualityMeasures(lP: np.ndarray,
+                           lT: np.ndarray,
+                           spacing: np.ndarray,
+                           metrics_type: Optional[Sequence, set] =None):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -144,7 +148,11 @@ def computeQualityMeasures(lP: np.ndarray, lT: np.ndarray, spacing: np.ndarray, 
     return quality
 
 
-def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None) -> Dict[str, list]:
+def get_metrics_dict_all_labels(labels: Sequence,
+                                gdth: np.ndarray,
+                                pred: np.ndarray,
+                                spacing: np.ndarray,
+                                metrics_type: Optional[Sequence, set] = None) -> Dict[str, list]:
     """
 
     :param metrics_type:
@@ -208,7 +216,11 @@ def get_metrics_dict_all_labels(labels, gdth, pred, spacing, metrics_type=None) 
     return metrics_dict
 
 
-def write_metrics(labels, gdth_path, pred_path, csv_file, metrics=None):
+def write_metrics(labels: Sequence,
+                  gdth_path: Union[str, pathlib.Path],
+                  pred_path: Union[str, pathlib.Path],
+                  csv_file: Union[str, pathlib.Path],
+                  metrics: Optional[Sequence, set] = None):
     """
 
     :param labels:  exclude background
