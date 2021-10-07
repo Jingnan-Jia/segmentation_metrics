@@ -217,37 +217,72 @@ def get_metrics_dict_all_labels(labels: Sequence,
 
 
 def write_metrics(labels: Sequence,
-                  gdth_path: Union[str, pathlib.Path],
-                  pred_path: Union[str, pathlib.Path],
-                  csv_file: Union[str, pathlib.Path],
+                  gdth_path: Optional[str, pathlib.Path, Sequence] = None,
+                  pred_path: Optional[str, pathlib.Path, Sequence] = None,
+                  csv_file: Optional[str, pathlib.Path] = None,
+                  gdth_array: Optional[np.ndarray, Sequence] = None,
+                  pred_array: Optional[np.ndarray, Sequence] = None,
                   metrics: Optional[Sequence, set] = None):
     """
 
     :param labels:  exclude background
     :param gdth_path: a absolute directory path or file name
     :param pred_path: a absolute directory path or file name
+    :param gdth_array: a np.ndarray for ground truth
+    :param pred_array: a np.ndarray for prediction
     :param csv_file: filename to save the metrics
-    :return: metrics_dict_all_labels: a dict which save metrics
+    :return: metrics: a sequence which save metrics
     """
+    if type(gdth_array) is not type(pred_array):
+        raise Exception(f"gdth_array is {type(gdth_array)} but pred_array is {type(pred_array)}. "
+                        f"They should be the same type.")
+    if type(gdth_path) is not type(pred_path):
+        raise Exception(f"gdth_array is {type(gdth_path)} but pred_array is {type(pred_path)}. "
+                        f"They should be the same type.")
+    if type(gdth_path) is type(gdth_array):
+        raise Exception(f"gdth_array is {type(gdth_path)} but pred_array is {type(pred_path)}. "
+                        f"Only one of them should be None, and the other should be np.ndarray.")
+
+
     print('start to calculate metrics (volume or distance) and write them to csv')
-    if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
-        gdth_names, pred_names = [gdth_path], [pred_path]
-    else:
-        gdth_names, pred_names = get_gdth_pred_names(gdth_path, pred_path)
 
-    for gdth_name, pred_name in zip(gdth_names, pred_names):
-        gdth, gdth_origin, gdth_spacing = load_itk(gdth_name, require_ori_sp=True)
-        pred, pred_origin, pred_spacing = load_itk(pred_name, require_ori_sp=True)
+    if gdth_path is not None:
+        if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
+            gdth_names, pred_names = [gdth_path], [pred_path]
+        else:
+            gdth_names, pred_names = get_gdth_pred_names(gdth_path, pred_path)
 
-        gdth = one_hot_encode_3d(gdth, labels=labels)
-        pred = one_hot_encode_3d(pred, labels=labels)
-        print('start to calculate metrics for image: ', pred_name)
-        metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
-                                                              metrics_type=metrics)
-        metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
-        data_frame = pd.DataFrame(metrics_dict_all_labels)
-        data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
-    print('Metrics were saved at : ', csv_file)
+        for gdth_name, pred_name in zip(gdth_names, pred_names):
+            gdth, gdth_origin, gdth_spacing = load_itk(gdth_name, require_ori_sp=True)
+            pred, pred_origin, pred_spacing = load_itk(pred_name, require_ori_sp=True)
+
+            gdth = one_hot_encode_3d(gdth, labels=labels)
+            pred = one_hot_encode_3d(pred, labels=labels)
+            print('start to calculate metrics for image: ', pred_name)
+            metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
+                                                                  metrics_type=metrics)
+            metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
+            data_frame = pd.DataFrame(metrics_dict_all_labels)
+            if csv_file:
+                data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
+
+    if gdth_array is not None:
+        if isinstance(gdth_array, np.ndarray):  # gdth is a file instead of a directory
+            gdth_array, pred_array = [gdth_array], [pred_array]
+
+        for gdth, pred in zip(gdth_array, pred_array):
+            gdth = one_hot_encode_3d(gdth, labels=labels)
+            pred = one_hot_encode_3d(pred, labels=labels)
+            print('start to calculate metrics for image: ', pred_name)
+            metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
+                                                                  metrics_type=metrics)
+            metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
+            data_frame = pd.DataFrame(metrics_dict_all_labels)
+            if csv_file:
+                data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
+
+    if csv_file:
+        print('Metrics were saved at : ', csv_file)
 
     return metrics_dict_all_labels
 
