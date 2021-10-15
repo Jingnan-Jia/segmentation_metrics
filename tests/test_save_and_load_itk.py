@@ -7,7 +7,7 @@ import numpy as np
 import sys
 import seg_metrics.seg_metrics as sg
 from parameterized import parameterized
-from myutil.myutil import save_itk
+from medutils.medutils import save_itk
 import tempfile
 
 SUFFIX_LS = {".mhd", ".mha", ".nrrd", ".nii", ".nii.gz", ".nrrd"}

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import pathlib
-from myutil.myutil import load_itk, get_gdth_pred_names, one_hot_encode_3d
+from medutils.medutils import load_itk, get_gdth_pred_names, one_hot_encode_3d
 import logging
 from tqdm import tqdm
 
