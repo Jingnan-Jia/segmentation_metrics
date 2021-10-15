@@ -9,10 +9,10 @@ labels = [0, 1]
 pred = np.ones((10, 10, 10))
 gdth = np.ones((10, 10, 10))
 
-test_case1 = {'labels': labels,
+test_case1 = [{'labels': labels,
               'pred': pred,
               'gdth': gdth,
-
+'metrics': None,
               'expected': {"mean_surface_distance": 0,
                            "median_surface_distance": 0,
                            "std_surface_distance": 0,
@@ -26,10 +26,11 @@ test_case1 = {'labels': labels,
                            "false_positive_rate": 0,
                            "volume_similarity": 1
                            }
-              }
-test_case2 = {'labels': labels,
+              }]
+test_case2 = [{'labels': labels,
               'pred': np.pad(pred, ((5, 5), (5, 5), (5, 5))),
               'gdth': np.pad(gdth, ((0, 10), (0, 10), (0, 10))),
+'metrics': None,
               'expected': {"mean_surface_distance": 0,
                            "median_surface_distance": 0,
                            "std_surface_distance": 0,
@@ -42,10 +43,11 @@ test_case2 = {'labels': labels,
                            "false_negtive_rate": 0,
                            "false_positive_rate": 0,
                            "volume_similarity": 1
-                           }}
-test_case3 = {'labels': labels,
+                           }}]
+test_case3 = [{'labels': labels,
               'pred': np.pad(pred, ((10, 0), (10, 0), (10, 0))),
               'gdth': np.pad(gdth, ((0, 10), (0, 10), (0, 10))),
+'metrics': None,
               'expected': {"mean_surface_distance": 0,
                            "median_surface_distance": 0,
                            "std_surface_distance": 0,
@@ -58,7 +60,7 @@ test_case3 = {'labels': labels,
                            "false_negtive_rate": 1,
                            "false_positive_rate": 1,
                            "volume_similarity": 0
-                           }}
+                           }}]
 
 class Img_itk:
     def __init__(self, img, origin, spacing, orientation):

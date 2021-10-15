@@ -30,7 +30,7 @@ def show_itk(img: sitk.Image, idx: int) -> None:
 def computeQualityMeasures(lP: np.ndarray,
                            lT: np.ndarray,
                            spacing: np.ndarray,
-                           metrics: Optional[Sequence, set] =None):
+                           metrics: Union[Sequence, set, None] =None):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -46,7 +46,10 @@ def computeQualityMeasures(lP: np.ndarray,
 
     voxel_metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs']
     distance_metrics = ['hd', 'hd95', 'msd', 'mdsd', 'stdsd']
-    metrics = set([]) if metrics is None else set(metrics)
+    if metrics is None:
+        metrics = set(['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd'])
+    else:
+        metrics = set(metrics)
     # to save time, we need to determine which metrics we need to compute
     if set(voxel_metrics).intersection(metrics) or not metrics:
         pred = lP.astype(int)  # float data does not support bit_and and bit_or
@@ -146,7 +149,6 @@ def computeQualityMeasures(lP: np.ndarray,
         quality["std_surface_distance"] = np.std(all_surface_distances)
         quality["95_surface_distance"] = np.percentile(all_surface_distances, 95)
         quality["Hausdorff"] = np.max(all_surface_distances)
-
     return quality
 
 
@@ -154,7 +156,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
                                 gdth: np.ndarray,
                                 pred: np.ndarray,
                                 spacing: np.ndarray,
-                                metrics: Optional[Sequence, set] = None) -> Dict[str, list]:
+                                metrics: Union[Sequence, set, None] = None) -> Dict[str, list]:
     """
 
     :param metrics:
@@ -217,10 +219,10 @@ def get_metrics_dict_all_labels(labels: Sequence,
 
     return metrics_dict
 
-def type_check(gdth_path: Optional[str, pathlib.Path, Sequence],
-               pred_path: Optional[str, pathlib.Path, Sequence],
-               gdth_img: Optional[np.ndarray, sitk.Image, Sequence],
-               pred_img: Optional[np.ndarray, sitk.Image, Sequence]) -> None:
+def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
+               pred_path: Union[str, pathlib.Path, Sequence, None],
+               gdth_img: Union[np.ndarray, sitk.Image, Sequence, None],
+               pred_img: Union[np.ndarray, sitk.Image, Sequence, None]) -> None:
 
     if type(gdth_img) is not type(pred_img):  # gdth and pred should have the same type
         raise Exception(f"gdth_array is {type(gdth_img)} but pred_array is {type(pred_img)}. "
@@ -243,12 +245,12 @@ def type_check(gdth_path: Optional[str, pathlib.Path, Sequence],
 
 
 def write_metrics(labels: Sequence,
-                  gdth_path: Optional[str, pathlib.Path, Sequence] = None,
-                  pred_path: Optional[str, pathlib.Path, Sequence] = None,
-                  csv_file: Optional[str, pathlib.Path] = None,
-                  gdth_img: Optional[np.ndarray, sitk.Image, Sequence] = None,
-                  pred_img: Optional[np.ndarray, sitk.Image, Sequence] = None,
-                  metrics: Optional[Sequence, set] = None,
+                  gdth_path: Union[str, pathlib.Path, Sequence, None] = None,
+                  pred_path: Union[str, pathlib.Path, Sequence, None] = None,
+                  csv_file: Union[str, pathlib.Path, None] = None,
+                  gdth_img: Union[np.ndarray, sitk.Image, Sequence, None] = None,
+                  pred_img: Union[np.ndarray, sitk.Image, Sequence, None] = None,
+                  metrics: Union[Sequence, set, None] = None,
                   verbose: bool = True):
     """
 
@@ -289,7 +291,7 @@ def write_metrics(labels: Sequence,
             gdth_img, pred_img = [gdth_img], [pred_img]
         with tqdm(zip(gdth_img, pred_img), disable=not verbose) as pbar:
             for gdth, pred in pbar:
-                if type(gdth_img) not in [sitk.Image, np.ndarray]:
+                if type(gdth) not in [sitk.Image, np.ndarray]:
                     raise TypeError(f"image type should be sitk.Image or np.ndarray, but is {type(gdth_img)}")
                 if isinstance(gdth, sitk.Image):
                     gdth_array = sitk.GetArrayFromImage(gdth)
@@ -309,9 +311,9 @@ def write_metrics(labels: Sequence,
                     pred = pred_array
                 else:
                     if gdth.ndim == 2:
-                        gdth_spacing = np.array([1, 1])
+                        gdth_spacing = np.array([1., 1.]) # spacing should be double
                     elif gdth.ndim == 3:
-                        gdth_spacing = np.array([1, 1, 1])
+                        gdth_spacing = np.array([1., 1., 1.]) # spacing should be double
 
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
