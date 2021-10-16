@@ -248,7 +248,6 @@ def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
             raise Exception(f"gdth_img[0]'s type should be ndarray or SimpleITK.SimpleITK.Image, but get {type(gdth_img)}")
 
 
-
 def write_metrics(labels: Sequence,
                   gdth_path: Union[str, pathlib.Path, Sequence, None] = None,
                   pred_path: Union[str, pathlib.Path, Sequence, None] = None,

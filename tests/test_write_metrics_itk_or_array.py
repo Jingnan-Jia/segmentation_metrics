@@ -101,8 +101,5 @@ class Test_seg_metrics(unittest.TestCase):
                     print(o, e)
 
 
-            # self.assertAlmostEqual(o[1], e[1] )
-
-
 if __name__ == '__main__':
     unittest.main()
