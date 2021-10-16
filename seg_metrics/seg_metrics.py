@@ -30,13 +30,13 @@ def show_itk(img: sitk.Image, idx: int) -> None:
 def computeQualityMeasures(lP: np.ndarray,
                            lT: np.ndarray,
                            spacing: np.ndarray,
-                           metrics: Union[Sequence, set, None] =None):
+                           metrics_names: Union[Sequence, set, None] =None):
     """
 
     :param lP: prediction, shape (x, y, z)
     :param lT: ground truth, shape (x, y, z)
     :param spacing: shape order (x, y, z)
-    :return: quality: dict contains metircs
+    :return: metrics_names: container contains metircs names
     """
     quality = {}
     labelPred = sitk.GetImageFromArray(lP, isVector=False)
@@ -46,12 +46,15 @@ def computeQualityMeasures(lP: np.ndarray,
 
     voxel_metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs']
     distance_metrics = ['hd', 'hd95', 'msd', 'mdsd', 'stdsd']
-    if metrics is None:
-        metrics = set(['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd'])
+    if metrics_names is None:
+        metrics_names = {'dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd',
+                         'stdsd'}
     else:
-        metrics = set(metrics)
+        metrics_names = set(metrics_names)
+    # print('metrics0', metrics_names)
+
     # to save time, we need to determine which metrics we need to compute
-    if set(voxel_metrics).intersection(metrics) or not metrics:
+    if set(voxel_metrics).intersection(metrics_names) or not metrics_names:
         pred = lP.astype(int)  # float data does not support bit_and and bit_or
         gdth = lT.astype(int)  # float data does not support bit_and and bit_or
         fp_array = copy.deepcopy(pred)  # keep pred unchanged
@@ -95,8 +98,10 @@ def computeQualityMeasures(lP: np.ndarray,
         quality["false_negtive_rate"] = false_negtive_rate
         quality["false_positive_rate"] = false_positive_rate
         quality["volume_similarity"] = dicecomputer.GetVolumeSimilarity()
-
-    if set(distance_metrics).intersection(metrics) or not metrics:
+    # print('set(distance_metrics).intersection(metrics)', set(distance_metrics).intersection(metrics_names))
+    # print('set(distance_metrics)', set(distance_metrics))
+    # print('metrics', metrics_names)
+    if set(distance_metrics).intersection(metrics_names) or not metrics_names:
         slice_idx = 300
         # Surface distance measures
         signed_distance_map = sitk.SignedMaurerDistanceMap(labelTrue > 0.5, squaredDistance=False,
@@ -156,10 +161,10 @@ def get_metrics_dict_all_labels(labels: Sequence,
                                 gdth: np.ndarray,
                                 pred: np.ndarray,
                                 spacing: np.ndarray,
-                                metrics: Union[Sequence, set, None] = None) -> Dict[str, list]:
+                                metrics_names: Union[Sequence, set, None] = None) -> Dict[str, list]:
     """
 
-    :param metrics:
+    :param metrics_names:
     :param labels: not include background, e.g. [4,5,6,7,8] or [1]
     :param gdth: shape: (x, y, z, channels), channels is equal to len(labels) or equal to len(labels)+1 (background)
     :param pred: the same as above
@@ -184,9 +189,8 @@ def get_metrics_dict_all_labels(labels: Sequence,
         print('start to get metrics for label: ', label)
         pred_per = pred[..., i]  # select onlabel
         gdth_per = gdth[..., i]
-
-        metrics = computeQualityMeasures(pred_per, gdth_per, spacing=spacing, metrics=metrics)
-        print(metrics)
+        # print('metrics-1', metrics_names)
+        metrics = computeQualityMeasures(pred_per, gdth_per, spacing=spacing, metrics_names=metrics_names)
 
         Dice_list.append(metrics["dice"])
         Jaccard_list.append(metrics["jaccard"])
@@ -279,7 +283,7 @@ def write_metrics(labels: Sequence,
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
                 metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
-                                                                      metrics=metrics)
+                                                                      metrics_names=metrics)
                 metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
 
                 if csv_file:
@@ -290,7 +294,9 @@ def write_metrics(labels: Sequence,
         if isinstance(gdth_img, np.ndarray):  # gdth is a file instead of a directory
             gdth_img, pred_img = [gdth_img], [pred_img]
         with tqdm(zip(gdth_img, pred_img), disable=not verbose) as pbar:
+            img_id = 0
             for gdth, pred in pbar:
+                img_id += 1
                 if type(gdth) not in [sitk.Image, np.ndarray]:
                     raise TypeError(f"image type should be sitk.Image or np.ndarray, but is {type(gdth_img)}")
                 if isinstance(gdth, sitk.Image):
@@ -318,8 +324,8 @@ def write_metrics(labels: Sequence,
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
                 metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
-                                                                      metrics=metrics)
-                metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
+                                                                      metrics_names=metrics)
+                # metrics_dict_all_labels['image_number'] = img_id  # add a new key to the metrics
 
                 if csv_file:
                     data_frame = pd.DataFrame(metrics_dict_all_labels)
