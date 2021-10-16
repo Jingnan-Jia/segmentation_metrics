@@ -13,7 +13,7 @@ from tqdm import tqdm
 __all__ = ["write_metrics"]
 
 
-def show_itk(img: sitk.Image, idx: int) -> None:
+def show_itk(img: sitk.SimpleITK.Image, idx: int) -> None:
     """Show a 2D slice of 3D ITK image.
 
     :param itk: ITK image
@@ -225,8 +225,8 @@ def get_metrics_dict_all_labels(labels: Sequence,
 
 def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
                pred_path: Union[str, pathlib.Path, Sequence, None],
-               gdth_img: Union[np.ndarray, sitk.Image, Sequence, None],
-               pred_img: Union[np.ndarray, sitk.Image, Sequence, None]) -> None:
+               gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None],
+               pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None]) -> None:
 
     if type(gdth_img) is not type(pred_img):  # gdth and pred should have the same type
         raise Exception(f"gdth_array is {type(gdth_img)} but pred_array is {type(pred_img)}. "
@@ -239,21 +239,21 @@ def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
                         f"Only one of them should be None, and the other should be assigned values.")
 
     assert any(isinstance(gdth_path, tp) for tp in [str, pathlib.Path, Sequence, type(None)])
-    assert any(isinstance(gdth_img, tp) for tp in [np.ndarray, sitk.Image, Sequence, type(None)])
+    assert any(isinstance(gdth_img, tp) for tp in [np.ndarray, sitk.SimpleITK.Image, Sequence, type(None)])
 
     if isinstance(gdth_path, Sequence):
         assert all(isinstance(gdth_path, tp) for tp in [str, pathlib.Path])
     if isinstance(gdth_img, Sequence):
-        assert all(isinstance(gdth_img, tp) for tp in [np.ndarray, sitk.Image])
-
+        if type(gdth_img[0]) not in [np.ndarray, sitk.SimpleITK.Image]:
+            raise Exception(f"gdth_img[0]'s type should be ndarray or SimpleITK.SimpleITK.Image, but get {type(gdth_img)}")
 
 
 def write_metrics(labels: Sequence,
                   gdth_path: Union[str, pathlib.Path, Sequence, None] = None,
                   pred_path: Union[str, pathlib.Path, Sequence, None] = None,
                   csv_file: Union[str, pathlib.Path, None] = None,
-                  gdth_img: Union[np.ndarray, sitk.Image, Sequence, None] = None,
-                  pred_img: Union[np.ndarray, sitk.Image, Sequence, None] = None,
+                  gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
+                  pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   metrics: Union[Sequence, set, None] = None,
                   verbose: bool = True):
     """
@@ -261,8 +261,8 @@ def write_metrics(labels: Sequence,
     :param labels:  exclude background
     :param gdth_path: a absolute directory path or file name
     :param pred_path: a absolute directory path or file name
-    :param gdth_img: a np.ndarray for ground truth
-    :param pred_img: a np.ndarray for prediction
+    :param gdth_img: np.ndarray for ground truth
+    :param pred_img: np.ndarray for prediction
     :param csv_file: filename to save the metrics
     :return: metrics: a sequence which save metrics
     """
@@ -291,15 +291,15 @@ def write_metrics(labels: Sequence,
                     data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
 
     if gdth_img is not None:
-        if isinstance(gdth_img, np.ndarray):  # gdth is a file instead of a directory
+        if type(gdth_img) in [sitk.SimpleITK.Image, np.ndarray]:  # gdth is a file instead of a list
             gdth_img, pred_img = [gdth_img], [pred_img]
         with tqdm(zip(gdth_img, pred_img), disable=not verbose) as pbar:
             img_id = 0
             for gdth, pred in pbar:
                 img_id += 1
-                if type(gdth) not in [sitk.Image, np.ndarray]:
-                    raise TypeError(f"image type should be sitk.Image or np.ndarray, but is {type(gdth_img)}")
-                if isinstance(gdth, sitk.Image):
+                if type(gdth) not in [sitk.SimpleITK.Image, np.ndarray]:
+                    raise TypeError(f"image type should be sitk.SimpleITK.Image or np.ndarray, but is {type(gdth)}")
+                if isinstance(gdth, sitk.SimpleITK.Image):
                     gdth_array = sitk.GetArrayFromImage(gdth)
                     pred_array = sitk.GetArrayFromImage(pred)
 
