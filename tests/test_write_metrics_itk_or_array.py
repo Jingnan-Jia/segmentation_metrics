@@ -5,10 +5,11 @@ from parameterized import parameterized
 import SimpleITK as sitk
 import seg_metrics.seg_metrics as sg
 
-labels = [0, 1, 2]
-pred = np.random.randint(low=0, high=2, size=(512, 512, 200))
-gdth = np.random.randint(low=0, high=2, size=(512, 512, 200))
-pred[0, 0, 0] = 0
+labels = [0, 1]
+pred = np.ones((10, 10, 10))
+gdth = np.ones((10, 10, 10))
+pred[0,0,0] = 0
+
 
 test_case1 = [{'labels': labels,
                'pred': pred,
@@ -76,6 +77,7 @@ class Test_seg_metrics(unittest.TestCase):
 
     @parameterized.expand([test_case1, test_case2, test_case3])
     def test_computeQualityMeasures(self, case):
+
         for data_type in ['np_array', 'itk_img']:
             if data_type=='itk_img':
                 pred = sitk.GetImageFromArray(case['pred'].astype('int16'))
@@ -83,14 +85,20 @@ class Test_seg_metrics(unittest.TestCase):
             else:
                 pred = case['pred']
                 gdth = case['gdth']
-        out = sg.write_metrics(labels=case['labels'],
-                               pred_img=pred,
-                               gdth_img=gdth,
-                               csv_file=None,
-                               metrics=case['metrics'])
-        for o, e in zip(collections.OrderedDict(sorted(out.items())).items(),
-                        collections.OrderedDict(sorted(case['expected'].items())).items()):
-            print(o, e)
+
+            for file_nb in ['single_file', 'batch_files']:
+                if file_nb is 'batch_files':
+                    pred = [pred, pred, pred, pred]
+                    gdth = [gdth, gdth, gdth, gdth]
+
+                out = sg.write_metrics(labels=case['labels'],
+                                       pred_img=pred,
+                                       gdth_img=gdth,
+                                       csv_file=None,
+                                       metrics=case['metrics'])
+                for o, e in zip(collections.OrderedDict(sorted(out.items())).items(),
+                                collections.OrderedDict(sorted(case['expected'].items())).items()):
+                    print(o, e)
 
 
             # self.assertAlmostEqual(o[1], e[1] )
