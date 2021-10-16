@@ -46,9 +46,10 @@ import seg_metrics.seg_metrics as sg
 ### Evaluate two batch of images with same filenames from two different folders
 ```python
 labels = [0, 4, 5 ,6 ,7 , 8]
-gdth_path = 'data/gdth'
-pred_path = 'data/pred'
-csv_file = 'metrics.csv'
+gdth_path = 'data/gdth'  # this folder saves a batch of ground truth images
+pred_path = 'data/pred'  # this folder saves the same number of prediction images
+csv_file = 'metrics.csv'  # results will be saved to this file and prented on terminal as well. If not set, results 
+# will only be shown on terminal.
 
 metrics = sg.write_metrics(labels=labels[1:],  # exclude background
                   gdth_path=gdth_path,
@@ -61,8 +62,8 @@ After runing the above codes, you can get a dict `metrics` which contains all th
 ### Evaluate two images
 ```python
 labels = [0, 4, 5 ,6 ,7 , 8]
-gdth_file = 'data/gdth.mhd'
-pred_file = 'data/pred.mhd'
+gdth_file = 'data/gdth.mhd'  # ground truth image full path
+pred_file = 'data/pred.mhd'  # prediction image full path
 csv_file = 'metrics.csv'
 
 metrics = sg.write_metrics(labels=labels[1:],  # exclude background
@@ -118,6 +119,31 @@ csv_file = 'metrics.csv'
 metrics = sg.write_metrics(labels, gdth_file, pred_file, csv_file, metrics=['dice', 'hd95'])
 dice = metrics['dice']
 hd95 = metrics['hd95']
+```
+
+
+### Evaluate two images in memory instead of in disk
+**Note: **
+1. The two images must be both numpy.ndarray or SimpleITK.Image.
+2. Input arguments are different. Please use 'gdth_img' and 'pred_img' instead of 'gdth_path' and 'pred_path'.
+
+```python
+labels = [0, 1, 2]
+gdth_img = np.array([0,0,1,1,2])
+pred_img = np.array([0,0,1,2,2])
+csv_file = 'metrics.csv'
+
+metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
+                  gdth_img=gdth_file,
+                  pred_img=pred_file,
+                  csv_file=csv_file,
+                  metrics=['dice', 'hd'])
+# for only one metrics
+metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
+                  gdth_img=gdth_file,
+                  pred_img=pred_file,
+                  csv_file=csv_file,
+                  metrics='msd')  
 ```
 
 If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. I would also appreciate it if you cite the package in your publication.
