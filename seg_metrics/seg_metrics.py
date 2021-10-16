@@ -261,8 +261,8 @@ def write_metrics(labels: Sequence,
     :param labels:  exclude background
     :param gdth_path: a absolute directory path or file name
     :param pred_path: a absolute directory path or file name
-    :param gdth_img: a np.ndarray for ground truth
-    :param pred_img: a np.ndarray for prediction
+    :param gdth_img: np.ndarray for ground truth
+    :param pred_img: np.ndarray for prediction
     :param csv_file: filename to save the metrics
     :return: metrics: a sequence which save metrics
     """

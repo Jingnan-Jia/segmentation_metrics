@@ -2,7 +2,7 @@ import unittest
 import collections
 import numpy as np
 from parameterized import parameterized
-
+import SimpleITK as sitk
 import seg_metrics.seg_metrics as sg
 
 labels = [0, 1, 2]

@@ -125,7 +125,10 @@ hd95 = metrics['hd95']
 ### Evaluate two images in memory instead of in disk
 **Note: **
 1. The two images must be both numpy.ndarray or SimpleITK.Image.
-2. Input arguments are different. Please use 'gdth_img' and 'pred_img' instead of 'gdth_path' and 'pred_path'.
+2. Input arguments are different. Please use `gdth_img` and `pred_img` instead of `gdth_path` and `pred_path`.
+3. If evaluating `numpy.ndarray`, the default `spacing` for all dimensions would be `1.0` for distance based metrics.
+4. If you want to evaluate `numpy.ndarray` with specific spacing, please convert numpy array to SimpleITK.Image manually
+at first.
 
 ```python
 labels = [0, 1, 2]
