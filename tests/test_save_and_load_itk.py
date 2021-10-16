@@ -30,13 +30,13 @@ class Test_seg_metrics(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tempdir:
             for suffix in SUFFIX_LS:
                 img_fpath = os.path.join(tempdir, 'test_img' + suffix)
-                print('img', image['IMG'].shape)
+                # print('img', image['IMG'].shape)
                 save_itk(img_fpath, image['IMG'], image['ORIGIN'], image['SPACING'])   # save image
                 load_img, load_origin, load_spacing = sg.load_itk(img_fpath, require_ori_sp=True)  # load image
-                print(SUFFIX_LS)
-                print('suffix', suffix)
-                print('load_origin', load_origin)
-                print('image[ORIGIN]', image['ORIGIN'])
+                # print(SUFFIX_LS)
+                # print('suffix', suffix)
+                # print('load_origin', load_origin)
+                # print('image[ORIGIN]', image['ORIGIN'])
                 self.assertIsNone(np.testing.assert_allclose(load_img, image['IMG']))
                 self.assertIsNone(np.testing.assert_allclose(load_origin, image['ORIGIN']))
                 self.assertIsNone(np.testing.assert_allclose(load_spacing, image['SPACING']))

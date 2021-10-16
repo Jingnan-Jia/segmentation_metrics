@@ -82,6 +82,7 @@ class Test_seg_metrics(unittest.TestCase):
         for o, e in zip(collections.OrderedDict(sorted(out.items())).items(),
                         collections.OrderedDict(sorted(case['expected'].items())).items()):
             print(o, e)
+
             # self.assertAlmostEqual(o[1], e[1] )
 
 
