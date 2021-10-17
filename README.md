@@ -137,14 +137,14 @@ pred_img = np.array([0,0,1,2,2])
 csv_file = 'metrics.csv'
 
 metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
-                  gdth_img=gdth_file,
-                  pred_img=pred_file,
+                  gdth_img=gdth_img,
+                  pred_img=pred_img,
                   csv_file=csv_file,
                   metrics=['dice', 'hd'])
 # for only one metrics
 metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
-                  gdth_img=gdth_file,
-                  pred_img=pred_file,
+                  gdth_img=gdth_img,
+                  pred_img=pred_img,
                   csv_file=csv_file,
                   metrics='msd')  
 ```
