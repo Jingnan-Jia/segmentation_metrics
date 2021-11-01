@@ -242,7 +242,7 @@ def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
     assert any(isinstance(gdth_img, tp) for tp in [np.ndarray, sitk.SimpleITK.Image, Sequence, type(None)])
 
     if isinstance(gdth_path, Sequence):
-        assert all(isinstance(gdth_path, tp) for tp in [str, pathlib.Path])
+        assert any(isinstance(gdth_path, tp) for tp in [str, pathlib.Path])
     if isinstance(gdth_img, Sequence):
         if type(gdth_img[0]) not in [np.ndarray, sitk.SimpleITK.Image]:
             raise Exception(f"gdth_img[0]'s type should be ndarray or SimpleITK.SimpleITK.Image, but get {type(gdth_img)}")
