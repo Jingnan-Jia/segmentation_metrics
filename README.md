@@ -43,7 +43,7 @@ import seg_metrics.seg_metrics as sg
 ```
 
 
-### Evaluate two batch of images with same filenames from two different folders
+### Evaluate two batches of images with same filenames from two different folders
 ```python
 labels = [0, 4, 5 ,6 ,7 , 8]
 gdth_path = 'data/gdth'  # this folder saves a batch of ground truth images
@@ -55,9 +55,9 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background
                   gdth_path=gdth_path,
                   pred_path=pred_path,
                   csv_file=csv_file)
-print(metrics)
+print(metrics)  # a list of dictionaries which includes the metrics for each pair of image.
 ```
-After runing the above codes, you can get a dict `metrics` which contains all the metrics. Also you can find a `.csv` file containing all metrics in the same directory.
+After runing the above codes, you can get a **list of dictionaries** `metrics` which contains all the metrics. **Also you can find a `.csv` file containing all metrics in the same directory.**
 
 ### Evaluate two images
 ```python
@@ -71,6 +71,11 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background
                   pred_path=pred_file,
                   csv_file=csv_file)
 ```
+After runing the above codes, you can get a **dictionary** `metrics` which contains all the metrics. **Also you can find a `.csv` file containing all metrics in the same directory.**
+
+**Note:** 
+1. When evaluating one image, the returned `metrics` is a dictionary.
+2. When evaluating a batch of images, the returned `metrics` is a list of dictionaries.
 
 ### Evaluate two images with specific metrics
 ```python
@@ -91,6 +96,7 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
                   csv_file=csv_file,
                   metrics='msd')  
 ```
+
 By passing the following parameters to select specific metrics.
 
 ```python

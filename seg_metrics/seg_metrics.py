@@ -30,7 +30,7 @@ def show_itk(img: sitk.SimpleITK.Image, idx: int) -> None:
 def computeQualityMeasures(lP: np.ndarray,
                            lT: np.ndarray,
                            spacing: np.ndarray,
-                           metrics_names: Union[Sequence, set, None] =None):
+                           metrics_names: Union[Sequence, set, None] = None):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -171,7 +171,6 @@ def get_metrics_dict_all_labels(labels: Sequence,
     :param spacing: spacing order should be (x, y, z) !!!
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
-
     Hausdorff_list = []
     Dice_list = []
     Jaccard_list = []
@@ -206,7 +205,10 @@ def get_metrics_dict_all_labels(labels: Sequence,
         nine5_surface_dis_list.append(metrics["95_surface_distance"])
         Hausdorff_list.append(metrics["Hausdorff"])
 
-    metrics_dict_all_labels = {'dice': Dice_list,
+    label_list = [lb for lb in labels]
+
+    metrics_dict_all_labels = {'label': label_list,
+                               'dice': Dice_list,
                                'jaccard': Jaccard_list,
                                'precision': precision_list,
                                'recall': recall_list,
@@ -223,11 +225,11 @@ def get_metrics_dict_all_labels(labels: Sequence,
 
     return metrics_dict
 
+
 def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
                pred_path: Union[str, pathlib.Path, Sequence, None],
                gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None],
                pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None]) -> None:
-
     if type(gdth_img) is not type(pred_img):  # gdth and pred should have the same type
         raise Exception(f"gdth_array is {type(gdth_img)} but pred_array is {type(pred_img)}. "
                         f"They should be the same type.")
@@ -245,7 +247,8 @@ def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
         assert any(isinstance(gdth_path, tp) for tp in [str, pathlib.Path])
     if isinstance(gdth_img, Sequence):
         if type(gdth_img[0]) not in [np.ndarray, sitk.SimpleITK.Image]:
-            raise Exception(f"gdth_img[0]'s type should be ndarray or SimpleITK.SimpleITK.Image, but get {type(gdth_img)}")
+            raise Exception(
+                f"gdth_img[0]'s type should be ndarray or SimpleITK.SimpleITK.Image, but get {type(gdth_img)}")
 
 
 def write_metrics(labels: Sequence,
@@ -268,7 +271,7 @@ def write_metrics(labels: Sequence,
     """
     type_check(gdth_path, pred_path, gdth_img, pred_img)
     logging.info('start to calculate metrics (volume or distance) and write them to csv')
-
+    output_list = []
     if gdth_path is not None:
         if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
             gdth_names, pred_names = [gdth_path], [pred_path]
@@ -289,6 +292,7 @@ def write_metrics(labels: Sequence,
                 if csv_file:
                     data_frame = pd.DataFrame(metrics_dict_all_labels)
                     data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
+                output_list.append(metrics_dict_all_labels)
 
     if gdth_img is not None:
         if type(gdth_img) in [sitk.SimpleITK.Image, np.ndarray]:  # gdth is a file instead of a list
@@ -317,9 +321,9 @@ def write_metrics(labels: Sequence,
                     pred = pred_array
                 else:
                     if gdth.ndim == 2:
-                        gdth_spacing = np.array([1., 1.]) # spacing should be double
+                        gdth_spacing = np.array([1., 1.])  # spacing should be double
                     elif gdth.ndim == 3:
-                        gdth_spacing = np.array([1., 1., 1.]) # spacing should be double
+                        gdth_spacing = np.array([1., 1., 1.])  # spacing should be double
 
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
@@ -330,11 +334,13 @@ def write_metrics(labels: Sequence,
                 if csv_file:
                     data_frame = pd.DataFrame(metrics_dict_all_labels)
                     data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
-
+                output_list.append(metrics_dict_all_labels)
     if csv_file:
         print('Metrics were saved at : ', csv_file)
-
-    return metrics_dict_all_labels
+    if len(output_list)==0:
+        return metrics_dict_all_labels
+    else:
+        return output_list
 
 
 def main():
@@ -347,6 +353,7 @@ def main():
                   gdth_path=gdth_path,
                   pred_path=pred_path,
                   csv_file=csv_file)
+
 
 if __name__ == "__main__":
     main()

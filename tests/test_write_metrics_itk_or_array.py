@@ -91,14 +91,15 @@ class Test_seg_metrics(unittest.TestCase):
                     pred = [pred, pred, pred, pred]
                     gdth = [gdth, gdth, gdth, gdth]
 
-                out = sg.write_metrics(labels=case['labels'],
+                outs = sg.write_metrics(labels=case['labels'],
                                        pred_img=pred,
                                        gdth_img=gdth,
                                        csv_file=None,
                                        metrics=case['metrics'])
-                for o, e in zip(collections.OrderedDict(sorted(out.items())).items(),
-                                collections.OrderedDict(sorted(case['expected'].items())).items()):
-                    print(o, e)
+                for out in outs:
+                    for o, e in zip(collections.OrderedDict(sorted(out.items())).items(),
+                                    collections.OrderedDict(sorted(case['expected'].items())).items()):
+                        print(o, e)
 
 
 if __name__ == '__main__':
