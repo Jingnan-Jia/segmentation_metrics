@@ -128,7 +128,7 @@ hd95 = metrics['hd95']
 ```
 
 
-### Evaluate two images in memory instead of in disk
+### Evaluate two images in memory instead of disk
 **Note:**
 1. The two images must be both numpy.ndarray or SimpleITK.Image.
 2. Input arguments are different. Please use `gdth_img` and `pred_img` instead of `gdth_path` and `pred_path`.
@@ -154,6 +154,19 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
                   csv_file=csv_file,
                   metrics='msd')  
 ```
+
+#### About the calculation of surface distance
+The default surface distance is calculated based on **fullyConnected** border. To change the default connected type, 
+you can set argument `fullyConnected` as `False` as follows.
+```python
+metrics = sg.write_metrics(labels=[1,2,3],
+                        gdth_img=gdth_img,
+                        pred_img=pred_img,
+                        csv_file=csv_file,
+                        fullyConnected=False) 
+```                  
+In 2D image, fullyconnected means 8 neighbor points, while faceconnected means 4 neighbor points.
+In 3D image, fullyconnected means 26 neighbor points, while faceconnected means 6 neighbor points.
 
 If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. I would also appreciate it if you cite the package in your publication.
 

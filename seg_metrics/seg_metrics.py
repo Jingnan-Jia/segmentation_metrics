@@ -30,7 +30,8 @@ def show_itk(img: sitk.SimpleITK.Image, idx: int) -> None:
 def computeQualityMeasures(lP: np.ndarray,
                            lT: np.ndarray,
                            spacing: np.ndarray,
-                           metrics_names: Union[Sequence, set, None] = None):
+                           metrics_names: Union[Sequence, set, None] = None,
+                           fullyConnected=True):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -111,7 +112,7 @@ def computeQualityMeasures(lP: np.ndarray,
         ref_distance_map = sitk.Abs(signed_distance_map)
         # show_itk(ref_distance_map, slice_idx)
 
-        ref_surface = sitk.LabelContour(labelTrue > 0.5, fullyConnected=True)
+        ref_surface = sitk.LabelContour(labelTrue > 0.5, fullyConnected=fullyConnected)
         # show_itk(ref_surface, slice_idx)
         ref_surface_array = sitk.GetArrayViewFromImage(ref_surface)
 
@@ -127,7 +128,7 @@ def computeQualityMeasures(lP: np.ndarray,
         seg_distance_map = sitk.Abs(signed_distance_map_pred)
         # show_itk(seg_distance_map, slice_idx)
 
-        seg_surface = sitk.LabelContour(labelPred > 0.5, fullyConnected=True)
+        seg_surface = sitk.LabelContour(labelPred > 0.5, fullyConnected=fullyConnected)
         # show_itk(seg_surface, slice_idx)
         seg_surface_array = sitk.GetArrayViewFromImage(seg_surface)
 
@@ -161,14 +162,16 @@ def get_metrics_dict_all_labels(labels: Sequence,
                                 gdth: np.ndarray,
                                 pred: np.ndarray,
                                 spacing: np.ndarray,
-                                metrics_names: Union[Sequence, set, None] = None) -> Dict[str, list]:
+                                metrics_names: Union[Sequence, set, None] = None,
+                                fullyConnected: bool = True) -> Dict[str, list]:
     """
 
-    :param metrics_names:
     :param labels: not include background, e.g. [4,5,6,7,8] or [1]
     :param gdth: shape: (x, y, z, channels), channels is equal to len(labels) or equal to len(labels)+1 (background)
     :param pred: the same as above
     :param spacing: spacing order should be (x, y, z) !!!
+    :param metrics_names: a list of metrics
+    :param fullyConnected: if apply fully connected border during the calculation of surface distance.
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
     Hausdorff_list = []
@@ -185,11 +188,14 @@ def get_metrics_dict_all_labels(labels: Sequence,
     false_negtive_rate_list = []
 
     for i, label in enumerate(labels):
-        print('start to get metrics for label: ', label)
+        print('\nstart to get metrics for label: ', label)
         pred_per = pred[..., i]  # select onlabel
         gdth_per = gdth[..., i]
         # print('metrics-1', metrics_names)
-        metrics = computeQualityMeasures(pred_per, gdth_per, spacing=spacing, metrics_names=metrics_names)
+        metrics = computeQualityMeasures(pred_per, gdth_per,
+                                         spacing=spacing,
+                                         metrics_names=metrics_names,
+                                         fullyConnected=fullyConnected)
 
         Dice_list.append(metrics["dice"])
         Jaccard_list.append(metrics["jaccard"])
