@@ -174,6 +174,9 @@ def get_metrics_dict_all_labels(labels: Sequence,
     :param fullyConnected: if apply fully connected border during the calculation of surface distance.
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
+    if metrics_names is None:
+        metrics_names = {'dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd',
+                         'stdsd'}
     hd_list = []
     dice_list = []
     jaccard_list = []
