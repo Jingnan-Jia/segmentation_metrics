@@ -278,6 +278,8 @@ def write_metrics(labels: Sequence,
     type_check(gdth_path, pred_path, gdth_img, pred_img)
     logging.info('start to calculate metrics (volume or distance) and write them to csv')
     output_list = []
+    metrics_dict_all_labels = None
+
     if gdth_path is not None:
         if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
             gdth_names, pred_names = [gdth_path], [pred_path]
@@ -343,6 +345,12 @@ def write_metrics(labels: Sequence,
                 output_list.append(metrics_dict_all_labels)
     if csv_file:
         print('Metrics were saved at : ', csv_file)
+
+    if metrics_dict_all_labels is None:
+        if gdth_path is not None:
+            raise Exception(f"The metrics are None， because no files were detected in folder: {gdth_path} or folder: {pred_path}")
+        # if gdth_img is not None:
+        #     raise Exception(f"The metrics are None，because give image is None")
     if len(output_list)==0:
         return metrics_dict_all_labels
     else:
