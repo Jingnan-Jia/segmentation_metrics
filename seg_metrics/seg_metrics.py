@@ -83,8 +83,8 @@ def computeQualityMeasures(lP: np.ndarray,
         precision = tp / (pred_sum + smooth)
         recall = tp / (gdth_sum + smooth)
 
-        false_positive_rate = fp / (fp + tn + smooth)
-        false_negtive_rate = fn / (fn + tp + smooth)
+        fpr = fp / (fp + tn + smooth)
+        fnr = fn / (fn + tp + smooth)
 
         jaccard = intersection_sum / (union_sum + smooth)
         dice = 2 * intersection_sum / (gdth_sum + pred_sum + smooth)
@@ -96,9 +96,9 @@ def computeQualityMeasures(lP: np.ndarray,
         quality["jaccard"] = jaccard
         quality["precision"] = precision
         quality["recall"] = recall
-        quality["false_negtive_rate"] = false_negtive_rate
-        quality["false_positive_rate"] = false_positive_rate
-        quality["volume_similarity"] = dicecomputer.GetVolumeSimilarity()
+        quality["fnr"] = fnr
+        quality["fpr"] = fpr
+        quality["vs"] = dicecomputer.GetVolumeSimilarity()
     # print('set(distance_metrics).intersection(metrics)', set(distance_metrics).intersection(metrics_names))
     # print('set(distance_metrics)', set(distance_metrics))
     # print('metrics', metrics_names)
@@ -150,11 +150,11 @@ def computeQualityMeasures(lP: np.ndarray,
         ref2seg_distances = ref2seg_distances + list(np.zeros(num_ref_surface_pixels - len(ref2seg_distances)))  #
 
         all_surface_distances = seg2ref_distances + ref2seg_distances
-        quality["mean_surface_distance"] = np.mean(all_surface_distances)
-        quality["median_surface_distance"] = np.median(all_surface_distances)
-        quality["std_surface_distance"] = np.std(all_surface_distances)
-        quality["95_surface_distance"] = np.percentile(all_surface_distances, 95)
-        quality["Hausdorff"] = np.max(all_surface_distances)
+        quality["msd"] = np.mean(all_surface_distances)
+        quality["mdsd"] = np.median(all_surface_distances)
+        quality["stdsd"] = np.std(all_surface_distances)
+        quality["hd95"] = np.percentile(all_surface_distances, 95)
+        quality["hd"] = np.max(all_surface_distances)
     return quality
 
 
@@ -174,18 +174,37 @@ def get_metrics_dict_all_labels(labels: Sequence,
     :param fullyConnected: if apply fully connected border during the calculation of surface distance.
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
-    Hausdorff_list = []
-    Dice_list = []
-    Jaccard_list = []
-    Volume_list = []
-    mean_surface_dis_list = []
-    median_surface_dis_list = []
-    std_surface_dis_list = []
-    nine5_surface_dis_list = []
+    if metrics_names is None:
+        metrics_names = {'dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd',
+                         'stdsd'}
+    hd_list = []
+    dice_list = []
+    jaccard_list = []
+    vs_list = []
+    msd_list = []
+    mdsd_list = []
+    stdsd_list = []
+    hd95_list = []
     precision_list = []
     recall_list = []
-    false_positive_rate_list = []
-    false_negtive_rate_list = []
+    fpr_list = []
+    fnr_list = []
+
+    label_list = [lb for lb in labels]
+
+    metrics_dict_all_labels = {'label': label_list,
+                               'dice': dice_list,
+                               'jaccard': jaccard_list,
+                               'precision': precision_list,
+                               'recall': recall_list,
+                               'fpr': fpr_list,
+                               'fnr': fnr_list,
+                               'vs': vs_list,
+                               'hd': hd_list,
+                               'msd': msd_list,
+                               'mdsd': mdsd_list,
+                               'stdsd': stdsd_list,
+                               'hd95': hd95_list}
 
     for i, label in enumerate(labels):
         print('\nstart to get metrics for label: ', label)
@@ -197,35 +216,38 @@ def get_metrics_dict_all_labels(labels: Sequence,
                                          metrics_names=metrics_names,
                                          fullyConnected=fullyConnected)
 
-        Dice_list.append(metrics["dice"])
-        Jaccard_list.append(metrics["jaccard"])
-        precision_list.append(metrics["precision"])
-        recall_list.append(metrics["recall"])
-        false_negtive_rate_list.append(metrics["false_negtive_rate"])
-        false_positive_rate_list.append(metrics["false_positive_rate"])
-        Volume_list.append(metrics["volume_similarity"])
-
-        mean_surface_dis_list.append(metrics["mean_surface_distance"])
-        median_surface_dis_list.append(metrics["median_surface_distance"])
-        std_surface_dis_list.append(metrics["std_surface_distance"])
-        nine5_surface_dis_list.append(metrics["95_surface_distance"])
-        Hausdorff_list.append(metrics["Hausdorff"])
-
-    label_list = [lb for lb in labels]
-
-    metrics_dict_all_labels = {'label': label_list,
-                               'dice': Dice_list,
-                               'jaccard': Jaccard_list,
-                               'precision': precision_list,
-                               'recall': recall_list,
-                               'fpr': false_positive_rate_list,
-                               'fnr': false_negtive_rate_list,
-                               'vs': Volume_list,
-                               'hd': Hausdorff_list,
-                               'msd': mean_surface_dis_list,
-                               'mdsd': median_surface_dis_list,
-                               'stdsd': std_surface_dis_list,
-                               'hd95': nine5_surface_dis_list}
+        for k, v in metrics_dict_all_labels.items():
+            if k in metrics_names:
+                v.append(metrics[k])
+    #     if "jaccard" in metrics.keys():
+    #     jaccard_list.append(metrics["jaccard"])
+    #     precision_list.append(metrics["precision"])
+    #     recall_list.append(metrics["recall"])
+    #     fnr_list.append(metrics["fnr"])
+    #     fpr_list.append(metrics["fpr"])
+    #     vs_list.append(metrics["vs"])
+    #
+    #     msd_list.append(metrics["msd"])
+    #     mdsd_list.append(metrics["mdsd"])
+    #     stdsd_list.append(metrics["stdsd"])
+    #     hd95_list.append(metrics["hd95"])
+    #     hd_list.append(metrics["hd"])
+    #
+    # label_list = [lb for lb in labels]
+    #
+    # metrics_dict_all_labels = {'label': label_list,
+    #                            'dice': dice_list,
+    #                            'jaccard': jaccard_list,
+    #                            'precision': precision_list,
+    #                            'recall': recall_list,
+    #                            'fpr': fpr_list,
+    #                            'fnr': fnr_list,
+    #                            'vs': vs_list,
+    #                            'hd': hd_list,
+    #                            'msd': msd_list,
+    #                            'mdsd': mdsd_list,
+    #                            'stdsd': stdsd_list,
+    #                            'hd95': hd95_list}
 
     metrics_dict = {k: v for k, v in metrics_dict_all_labels.items() if v}  # remove empty values
 
@@ -279,6 +301,8 @@ def write_metrics(labels: Sequence,
     logging.info('start to calculate metrics (volume or distance) and write them to csv')
     output_list = []
     metrics_dict_all_labels = None
+    if metrics is None:
+        metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd']
 
     if gdth_path is not None:
         if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
