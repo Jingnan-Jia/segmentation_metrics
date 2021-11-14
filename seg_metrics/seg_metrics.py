@@ -301,6 +301,8 @@ def write_metrics(labels: Sequence,
     logging.info('start to calculate metrics (volume or distance) and write them to csv')
     output_list = []
     metrics_dict_all_labels = None
+    if metrics is None:
+        metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd']
 
     if gdth_path is not None:
         if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
