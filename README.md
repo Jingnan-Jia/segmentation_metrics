@@ -169,7 +169,7 @@ In 2D image, fullyconnected means 8 neighbor points, while faceconnected means 4
 In 3D image, fullyconnected means 26 neighbor points, while faceconnected means 6 neighbor points.
 
 If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. 
-I would also appreciate it if you cite the package in your publication.
+I would also appreciate it if you cite the package in your publication. (**Note:** This package is **NOT** approved for clinical use and is intended for research use only. )
 
 #Bibtex
 
