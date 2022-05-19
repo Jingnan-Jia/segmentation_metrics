@@ -356,6 +356,8 @@ def write_metrics(labels: Sequence,
                         gdth_spacing = np.array([1., 1.])  # spacing should be double
                     elif gdth.ndim == 3:
                         gdth_spacing = np.array([1., 1., 1.])  # spacing should be double
+                    else:
+                        raise Exception(f"The dimension of gdth should be 2 or 3, but it is {gdth.ndim}")
 
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
