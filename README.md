@@ -6,7 +6,6 @@
 
 This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha`, `.nii`, `.nii.gz` or `.nrrd`), and write them to csv file.
 
-
 ## Summary
 To assess the segmentation performance, there are several different methods. Two main methods are volume-based metrics and distance-based metrics.
 
