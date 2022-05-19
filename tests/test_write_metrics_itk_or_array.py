@@ -94,7 +94,7 @@ class Img_itk:
 
 class Test_seg_metrics(unittest.TestCase):
 
-    @parameterized.expand([test_case1, test_case2, test_case3])
+    @parameterized.expand([test_case0, test_case1, test_case2, test_case3])
     def test_computeQualityMeasures(self, case):
 
         for data_type in ['np_array', 'itk_img']:
