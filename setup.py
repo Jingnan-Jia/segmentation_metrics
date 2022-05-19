@@ -1,11 +1,17 @@
 import setuptools
 
+def parse_requirements(requirements):
+    with open(requirements) as f:
+        return [l.strip('\n') for l in f if l.strip('\n') and not l.startswith('#')]
+
+reqs = parse_requirements('requirements.txt')
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="seg_metrics", # Replace with your own username
-    version="1.0.24",
+    version="1.0.25",
     author="Jingnan",
     author_email="jiajingnan2222@gmail.com",
     description="A package to compute different segmentation metrics for Medical images.",
@@ -19,5 +25,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    # install_requires=[''],
+    install_requires=reqs,
 )
