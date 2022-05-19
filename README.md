@@ -12,7 +12,7 @@ To assess the segmentation performance, there are several different methods. Two
 
 ## Metrics included
 This library computes the following performance metrics for segmentation:
-
+ 
 ### Voxel based metrics
 - Dice (F-1)
 - Jaccard
@@ -138,8 +138,10 @@ at first.
 
 ```python
 labels = [0, 1, 2]
-gdth_img = np.array([0,0,1,1,2])
-pred_img = np.array([0,0,1,2,2])
+gdth_img = np.array([[0,0,1], 
+                     [0,1,2]])
+pred_img = np.array([[0,0,1], 
+                     [0,2,2]])
 csv_file = 'metrics.csv'
 
 metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
