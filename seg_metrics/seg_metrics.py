@@ -177,6 +177,8 @@ def get_metrics_dict_all_labels(labels: Sequence,
     if metrics_names is None:
         metrics_names = {'dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd',
                          'stdsd'}
+    if type(metrics_names) is str:
+        metrics_names = [metrics_names]
     hd_list = []
     dice_list = []
     jaccard_list = []
