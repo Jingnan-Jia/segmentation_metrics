@@ -207,7 +207,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
                                'hd95': hd95_list}
 
     for i, label in enumerate(labels):
-        print('\nstart to get metrics for label: ', label)
+        logging.info('\nstart to get metrics for label: ', label)
         pred_per = pred[..., i]  # select onlabel
         gdth_per = gdth[..., i]
         # print('metrics-1', metrics_names)
@@ -356,6 +356,8 @@ def write_metrics(labels: Sequence,
                         gdth_spacing = np.array([1., 1.])  # spacing should be double
                     elif gdth.ndim == 3:
                         gdth_spacing = np.array([1., 1., 1.])  # spacing should be double
+                    else:
+                        raise Exception(f"The dimension of gdth should be 2 or 3, but it is {gdth.ndim}")
 
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
@@ -368,7 +370,7 @@ def write_metrics(labels: Sequence,
                     data_frame.to_csv(csv_file, mode='a', header=not os.path.exists(csv_file), index=False)
                 output_list.append(metrics_dict_all_labels)
     if csv_file:
-        print('Metrics were saved at : ', csv_file)
+        logging.info('Metrics were saved at : ', csv_file)
 
     if metrics_dict_all_labels is None:
         if gdth_path is not None:

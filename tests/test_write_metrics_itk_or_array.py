@@ -11,6 +11,25 @@ gdth = np.ones((10, 10, 10))
 pred[0,0,0] = 0
 
 
+test_case0 = [{'labels': [0, 1, 2],
+               'pred':  np.array([[0,0,1], [0,2,2]]),
+               'gdth': np.array([[0,0,1], [0,1,2]]),
+               'metrics': None,
+               'expected': {"msd": 0,
+                            "mdsd": 0,
+                            "stdsd": 0,
+                            "hd95": 0,
+                            "hd": 0,
+                            "dice": 1,
+                            "jaccard": 1,
+                            "precision": 1,
+                            "recall": 1,
+                            "fnr": 0,
+                            "fpr": 0,
+                            "vs": 1
+                            }
+               }]
+
 test_case1 = [{'labels': labels,
                'pred': pred,
                'gdth': gdth,
@@ -75,7 +94,7 @@ class Img_itk:
 
 class Test_seg_metrics(unittest.TestCase):
 
-    @parameterized.expand([test_case1, test_case2, test_case3])
+    @parameterized.expand([test_case0, test_case1, test_case2, test_case3])
     def test_computeQualityMeasures(self, case):
 
         for data_type in ['np_array', 'itk_img']:
