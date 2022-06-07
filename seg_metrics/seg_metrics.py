@@ -289,7 +289,7 @@ def write_metrics(labels: Sequence,
                   pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   metrics: Union[Sequence, set, None] = None,
                   verbose: bool = True,
-                  spacing: Optional[Sequence, np.ndarray] = Nones):
+                  spacing: Optional[Sequence, np.ndarray] = None):
     """
 
     :param labels:  exclude background
