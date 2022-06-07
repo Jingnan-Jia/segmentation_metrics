@@ -288,7 +288,8 @@ def write_metrics(labels: Sequence,
                   gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   metrics: Union[Sequence, set, None] = None,
-                  verbose: bool = True):
+                  verbose: bool = True,
+                  spacing: Optional[Sequence, np.ndarray] = Nones):
     """
 
     :param labels:  exclude background
@@ -353,13 +354,20 @@ def write_metrics(labels: Sequence,
 
                     gdth = gdth_array
                     pred = pred_array
-                else:
-                    if gdth.ndim == 2:
-                        gdth_spacing = np.array([1., 1.])  # spacing should be double
-                    elif gdth.ndim == 3:
-                        gdth_spacing = np.array([1., 1., 1.])  # spacing should be double
+                else:  # numpy.Ndarray
+                    if spacing is None:
+                        if gdth.ndim == 2:
+                            gdth_spacing = np.array([1., 1.])  # spacing should be double
+                        elif gdth.ndim == 3:
+                            gdth_spacing = np.array([1., 1., 1.])  # spacing should be double
+                        else:
+                            raise Exception(f"The dimension of gdth should be 2 or 3, but it is {gdth.ndim}")
                     else:
-                        raise Exception(f"The dimension of gdth should be 2 or 3, but it is {gdth.ndim}")
+                        gdth_spacing = np.array(spacing).astype(np.float32)
+                        if len(gdth_spacing) not in (2, 3):
+                            raise Exception(f"The length of spacing should be 2 or 3, but the spacing is {gdth_spacing} "
+                                            f"with length of {len(gdth_spacing)}")
+
 
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)

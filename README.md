@@ -132,8 +132,7 @@ hd95 = metrics['hd95']
 1. The two images must be both numpy.ndarray or SimpleITK.Image.
 2. Input arguments are different. Please use `gdth_img` and `pred_img` instead of `gdth_path` and `pred_path`.
 3. If evaluating `numpy.ndarray`, the default `spacing` for all dimensions would be `1.0` for distance based metrics.
-4. If you want to evaluate `numpy.ndarray` with specific spacing, please convert numpy array to SimpleITK.Image manually
-at first.
+4. If you want to evaluate `numpy.ndarray` with specific spacing, pass a sequence with the length of image dimension as `spacing`.
 
 ```python
 labels = [0, 1, 2]
@@ -142,17 +141,19 @@ gdth_img = np.array([[0,0,1],
 pred_img = np.array([[0,0,1], 
                      [0,2,2]])
 csv_file = 'metrics.csv'
-
+spacing = [1, 2]
 metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
                   gdth_img=gdth_img,
                   pred_img=pred_img,
                   csv_file=csv_file,
+                  spacing=spacing,
                   metrics=['dice', 'hd'])
 # for only one metrics
 metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
                   gdth_img=gdth_img,
                   pred_img=pred_img,
                   csv_file=csv_file,
+                  spacing=spacing,
                   metrics='msd')  
 ```
 
