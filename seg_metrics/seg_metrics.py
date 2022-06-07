@@ -363,7 +363,7 @@ def write_metrics(labels: Sequence,
                         else:
                             raise Exception(f"The dimension of gdth should be 2 or 3, but it is {gdth.ndim}")
                     else:
-                        gdth_spacing = np.array(spacing).astype(np.float32)
+                        gdth_spacing = np.array(spacing).astype(np.float64)
                         if len(gdth_spacing) not in (2, 3):
                             raise Exception(f"The length of spacing should be 2 or 3, but the spacing is {gdth_spacing} "
                                             f"with length of {len(gdth_spacing)}")
