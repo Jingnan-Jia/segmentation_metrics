@@ -41,9 +41,9 @@ def computeQualityMeasures(lP: np.ndarray,
     """
     quality = {}
     labelPred = sitk.GetImageFromArray(lP, isVector=False)
-    labelPred.SetSpacing(spacing)
+    labelPred.SetSpacing(np.array(spacing).astype(np.float64))
     labelTrue = sitk.GetImageFromArray(lT, isVector=False)
-    labelTrue.SetSpacing(spacing)  # spacing order (x, y, z)
+    labelTrue.SetSpacing(np.array(spacing).astype(np.float64))  # spacing order (x, y, z)
 
     voxel_metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs']
     distance_metrics = ['hd', 'hd95', 'msd', 'mdsd', 'stdsd']
