@@ -165,7 +165,7 @@ metrics = sg.write_metrics(labels=[1,2,3],
                         gdth_img=gdth_img,
                         pred_img=pred_img,
                         csv_file=csv_file,
-                        fullyConnected=False) 
+                        fully_connected=False) 
 ```                  
 In 2D image, fullyconnected means 8 neighbor points, while faceconnected means 4 neighbor points.
 In 3D image, fullyconnected means 26 neighbor points, while faceconnected means 6 neighbor points.

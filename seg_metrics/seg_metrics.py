@@ -289,7 +289,8 @@ def write_metrics(labels: Sequence,
                   pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   metrics: Union[Sequence, set, None] = None,
                   verbose: bool = True,
-                  spacing: Union[Sequence, np.ndarray, None] = None):
+                  spacing: Union[Sequence, np.ndarray, None] = None,
+                  fully_connected=True):
     """
 
     :param labels:  exclude background
@@ -321,7 +322,7 @@ def write_metrics(labels: Sequence,
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
                 metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
-                                                                      metrics_names=metrics)
+                                                                      metrics_names=metrics, fullyConnected=fully_connected)
                 metrics_dict_all_labels['filename'] = pred_name  # add a new key to the metrics
 
                 if csv_file:
@@ -372,7 +373,7 @@ def write_metrics(labels: Sequence,
                 gdth = one_hot_encode_3d(gdth, labels=labels)
                 pred = one_hot_encode_3d(pred, labels=labels)
                 metrics_dict_all_labels = get_metrics_dict_all_labels(labels, gdth, pred, spacing=gdth_spacing[::-1],
-                                                                      metrics_names=metrics)
+                                                                      metrics_names=metrics, fullyConnected=fully_connected)
                 # metrics_dict_all_labels['image_number'] = img_id  # add a new key to the metrics
 
                 if csv_file:
