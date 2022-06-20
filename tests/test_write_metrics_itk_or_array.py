@@ -106,7 +106,7 @@ class Test_seg_metrics(unittest.TestCase):
                 gdth = case['gdth']
 
             for file_nb in ['single_file', 'batch_files']:
-                if file_nb is 'batch_files':
+                if file_nb == 'batch_files':
                     pred = [pred, pred, pred, pred]
                     gdth = [gdth, gdth, gdth, gdth]
 
