@@ -6,15 +6,14 @@ def parse_requirements(requirements):
 
 # reqs = parse_requirements('requirements.txt')
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf8") as fh:
     long_description = fh.read()
-
 setuptools.setup(
     name="seg_metrics", # Replace with your own username
-    version="1.0.32",
-    author="Jingnan",
+    version="1.0.33",
+    author="Jingnan Jia",
     author_email="jiajingnan2222@gmail.com",
-    description="A package to compute different segmentation metrics for Medical images.",
+    description="A package to compute different segmentation metrics for 2D/3D medical images.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Ordgod/segmentation_metrics",
@@ -25,4 +24,4 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
-    install_requires=['pandas', 'numpy', 'coverage', 'matplotlib', 'parameterized', 'tqdm', 'medutils', 'PySimpleGUI', 'SimpleITK'])
+    install_requires=parse_requirements(requirements="requirements.txt"))

@@ -56,7 +56,7 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background
                   csv_file=csv_file)
 print(metrics)  # a list of dictionaries which includes the metrics for each pair of image.
 ```
-After runing the above codes, you can get a **list of dictionaries** `metrics` which contains all the metrics. **Also you can find a `.csv` file containing all metrics in the same directory.**
+After runing the above codes, you can get a **list of dictionaries** `metrics` which contains all the metrics. **Also you can find a `.csv` file containing all metrics in the same directory.** If the `csv_file` is not given, the metrics results will not be saved to disk.
 
 ### Evaluate two images
 ```python
@@ -170,6 +170,17 @@ metrics = sg.write_metrics(labels=[1,2,3],
 In 2D image, fullyconnected means 8 neighbor points, while faceconnected means 4 neighbor points.
 In 3D image, fullyconnected means 26 neighbor points, while faceconnected means 6 neighbor points.
 
+# Comparision with medpy
+`medpy` also provide functions to calculate metrics for medical images. But `seg-metrics`     
+has several advantages.
+1. **Faster**. `seg-metrics` is 10 times faster calculating distance based metrics. This [jupyter 
+notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFcxDr#scrollTo=Va-2F59Y8sjk) could reproduce the results. 
+2. **More convenient**. `seg-metrics` can calculate all different metrics in once in one function while 
+`medpy` needs to call different functions multiple times which cost more time and code.
+3. **Powerful**. `seg-metrics` can calculate multi-label segmentation metrics and save results to 
+`.csv` file in good manner, but `medpy` only provides binary segmentation metrics. Comparision can be found in this [jupyter 
+notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFcxDr#scrollTo=Va-2F59Y8sjk).
+ 
 If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. 
 I would also appreciate it if you cite the package in your publication. (**Note:** This package is **NOT** approved for clinical use and is intended for research use only. )
 
