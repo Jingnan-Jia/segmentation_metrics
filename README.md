@@ -173,11 +173,11 @@ In 3D image, fullyconnected means 26 neighbor points, while faceconnected means 
 # Comparision with medpy
 `medpy` also provide functions to calculate metrics for medical images. But `seg-metrics`     
 has several advantages.
-1. **Faster**. `seg-metrics` is 10 times faster calculating distance based metrics. This [jupyter 
+1. **Faster**. `seg-metrics` is **10 times faster** calculating distance based metrics. This [jupyter 
 notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFcxDr#scrollTo=Va-2F59Y8sjk) could reproduce the results. 
 2. **More convenient**. `seg-metrics` can calculate all different metrics in once in one function while 
 `medpy` needs to call different functions multiple times which cost more time and code.
-3. **Powerful**. `seg-metrics` can calculate multi-label segmentation metrics and save results to 
+3. **More Powerful**. `seg-metrics` can calculate **multi-label** segmentation metrics and save results to 
 `.csv` file in good manner, but `medpy` only provides binary segmentation metrics. Comparision can be found in this [jupyter 
 notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFcxDr#scrollTo=Va-2F59Y8sjk).
  

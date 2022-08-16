@@ -10,7 +10,7 @@ with open("README.md", "r", encoding="utf8") as fh:
     long_description = fh.read()
 setuptools.setup(
     name="seg_metrics", # Replace with your own username
-    version="1.0.33",
+    version="1.0.34",
     author="Jingnan Jia",
     author_email="jiajingnan2222@gmail.com",
     description="A package to compute different segmentation metrics for 2D/3D medical images.",
