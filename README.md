@@ -3,6 +3,7 @@
 ![publish workflow status](https://github.com/Jingnan-Jia/segmentation_metrics/actions/workflows/python-publish.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Jingnan-Jia/segmentation_metrics/branch/master/graph/badge.svg?token=UO1QSYBEU6)](https://codecov.io/gh/Jingnan-Jia/segmentation_metrics)
 ![test workflow status](https://github.com/Jingnan-Jia/segmentation_metrics/actions/workflows/test_and_coverage.yml/badge.svg?branch=master)
+[![OSCS Status](https://www.oscs1024.com/platform/badge/Jingnan-Jia/segmentation_metrics.svg?size=small)](https://www.oscs1024.com/project/Jingnan-Jia/segmentation_metrics?ref=badge_small)
 
 This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha`, `.nii`, `.nii.gz` or `.nrrd`), and write them to csv file.
 
