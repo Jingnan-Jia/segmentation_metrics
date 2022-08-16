@@ -1,9 +1,1 @@
-pandas
-numpy
-coverage
-matplotlib
-parameterized
-tqdm
-medutils
-PySimpleGUI
-SimpleITK
+.
