@@ -181,11 +181,12 @@ notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFc
 3. **More Powerful**. `seg-metrics` can calculate **multi-label** segmentation metrics and save results to 
 `.csv` file in good manner, but `medpy` only provides binary segmentation metrics. Comparision can be found in this [jupyter 
 notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFcxDr#scrollTo=Va-2F59Y8sjk).
- 
+
+# 
 If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. 
 I would also appreciate it if you cite the package in your publication. (**Note:** This package is **NOT** approved for clinical use and is intended for research use only. )
 
-#Bibtex
+# Bibtex
 
     @misc{Jingnan,
         title  = {A package to compute segmentation metrics: seg-metrics},
