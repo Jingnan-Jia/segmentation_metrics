@@ -5,3 +5,5 @@ omit =
     */dist-packages/*
     */distutils/*
     tests/*
+
+include = seg_metrics/*
