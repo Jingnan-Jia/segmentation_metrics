@@ -16,12 +16,20 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="v1.0.4">
+    <list default="true" id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="tune format">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <list id="a3962633-3fbd-4e72-8fcf-e690db0e5799" name="update the comparison with medpy" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/segmentation_metrics.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/segmentation_metrics.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +39,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Python Unit Test" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -47,6 +55,9 @@
       </map>
     </option>
   </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="dev" />
+  </component>
   <component name="Git.Settings">
     <option name="PUSH_TAGS">
       <GitPushTagMode>
@@ -56,7 +67,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="70241f38-591d-4e7e-a834-fedcff6e683b" />
+  <component name="JupyterTrust" id="109bda92-bea3-42a0-b9e4-b76999694f00" />
   <component name="ProjectId" id="1dSePkViF6bujgGS3WLtpxUnPyP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -66,24 +77,25 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.collect_statistics">
-    <configuration name="collect_statistics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.runner">
+    <configuration name="practice" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="segmentation_metrics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../e2e_new" />
+      <option name="SDK_HOME" value="sshConfig://jjia@localhost:22 password/home/jjia/.conda/envs/py38/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../e2e_new/collect_statistics.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/practice.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -92,20 +104,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="seg_metrics" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="runner" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="segmentation_metrics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/seg_metrics" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="sshConfig://jjia@localhost:22 password/home/jjia/.conda/envs/py38/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/seg_metrics/seg_metrics.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/runner.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -114,38 +126,79 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_load_itk" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="setup" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="segmentation_metrics" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="E:\Users\jjia\anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test_load_itk.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/setup.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test_write_metrics_itk_or_array" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="segmentation_metrics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="sftp://jjia@localhost:22/data/jjia/.conda/envs/py38/bin/python3.8" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_write_metrics_itk_or_array.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_spacing.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="segmentation_metrics" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_spacing.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.collect_statistics" />
-      <item itemvalue="Python.seg_metrics" />
-      <item itemvalue="Python.test_load_itk" />
+      <item itemvalue="Python.test_write_metrics_itk_or_array" />
+      <item itemvalue="Python.runner" />
+      <item itemvalue="Python.setup" />
+      <item itemvalue="Python.practice" />
+      <item itemvalue="Python tests.Unittests in test_spacing.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.collect_statistics" />
-        <item itemvalue="Python.test_load_itk" />
-        <item itemvalue="Python.seg_metrics" />
+        <item itemvalue="Python.runner" />
+        <item itemvalue="Python.setup" />
+        <item itemvalue="Python tests.Unittests in test_spacing.py" />
+        <item itemvalue="Python.practice" />
+        <item itemvalue="Python.test_write_metrics_itk_or_array" />
       </list>
     </recent_temporary>
   </component>
@@ -156,6 +209,7 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="de961a45-65c3-4ca4-b2b6-76a72f045048" name="Default Changelist" comment="" />
+      <changelist id="a3962633-3fbd-4e72-8fcf-e690db0e5799" name="update the comparison with medpy" comment="" />
       <created>1592422900021</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -164,85 +218,362 @@
       <workItem from="1624567272431" duration="497000" />
       <workItem from="1624658921875" duration="1017000" />
       <workItem from="1624790330887" duration="4778000" />
+      <workItem from="1634939089584" duration="19460000" />
+      <workItem from="1636638135859" duration="1085000" />
+      <workItem from="1636925657976" duration="8623000" />
+      <workItem from="1638527071869" duration="211000" />
+      <workItem from="1652976852877" duration="8391000" />
+      <workItem from="1654620883811" duration="3753000" />
+      <workItem from="1654637171897" duration="3469000" />
+      <workItem from="1655482327531" duration="2099000" />
+      <workItem from="1655729714073" duration="1799000" />
+      <workItem from="1660392890897" duration="20409000" />
+      <workItem from="1663197481091" duration="6087000" />
     </task>
-    <task id="LOCAL-00001" summary="init repo">
-      <created>1592424146477</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
+    <task id="LOCAL-00013" summary="code report">
+      <created>1634419724002</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1592424146477</updated>
+      <updated>1634419724002</updated>
     </task>
-    <task id="LOCAL-00002" summary="Seconda commit, update readme">
-      <created>1592428498277</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
+    <task id="LOCAL-00014" summary="test badge for master branch">
+      <created>1634420174467</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1592428498277</updated>
+      <updated>1634420174467</updated>
     </task>
-    <task id="LOCAL-00003" summary="update readme">
-      <created>1592429544954</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+    <task id="LOCAL-00015" summary="update docs for array/simpleitk.Image">
+      <created>1634421571349</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
       <option name="project" value="LOCAL" />
-      <updated>1592429544954</updated>
+      <updated>1634421571349</updated>
     </task>
-    <task id="LOCAL-00004" summary="add function to resolve metrics_type and filename.">
-      <created>1592480014719</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+    <task id="LOCAL-00016" summary="update docs for the note of spacing">
+      <created>1634422079561</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1592480014719</updated>
+      <updated>1634422079561</updated>
     </task>
-    <task id="LOCAL-00005" summary="add unit test, add the support to .mha files.">
-      <created>1603889715529</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+    <task id="LOCAL-00017" summary="fix bugs">
+      <created>1634425643929</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1603889715529</updated>
+      <updated>1634425643929</updated>
     </task>
-    <task id="LOCAL-00006" summary="use myutil as the external package for some common medical image operations.">
-      <created>1603996791111</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
+    <task id="LOCAL-00018" summary="prepare a release">
+      <created>1634425786569</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
-      <updated>1603996791111</updated>
+      <updated>1634425786569</updated>
     </task>
-    <task id="LOCAL-00007" summary="add the support of .nii and .nii.gz">
-      <created>1612678114247</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
+    <task id="LOCAL-00019" summary="fix documentation">
+      <created>1634507966978</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
       <option name="project" value="LOCAL" />
-      <updated>1612678114247</updated>
+      <updated>1634507966978</updated>
     </task>
-    <task id="LOCAL-00008" summary="add type hinting">
-      <created>1624539025015</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
+    <task id="LOCAL-00020" summary="fix a bug on path checking">
+      <created>1635773300270</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1624539025015</updated>
+      <updated>1635773300270</updated>
     </task>
-    <task id="LOCAL-00009" summary="add type hinting">
-      <created>1624540830648</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
+    <task id="LOCAL-00021" summary="Fix a bug: If computing a batch of images, the returned value shold be a list of metrics dictionaries.">
+      <created>1635776381160</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1624540830649</updated>
+      <updated>1635776381160</updated>
     </task>
-    <task id="LOCAL-00010" summary="add model name in __all__">
-      <created>1624659278576</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
+    <task id="LOCAL-00022" summary="add docs: If computing a batch of images, the returned value shold be a list of metrics dictionaries.">
+      <created>1635776742832</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1624659278576</updated>
+      <updated>1635776742832</updated>
     </task>
-    <task id="LOCAL-00011" summary="v1.0.4">
-      <created>1624659312342</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
+    <task id="LOCAL-00023" summary="fix the testing file">
+      <created>1635776973832</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1624659312342</updated>
+      <updated>1635776973832</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00024" summary="add new parameter: fullyconnected">
+      <created>1635796195848</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1635796195848</updated>
+    </task>
+    <task id="LOCAL-00025" summary="nothing">
+      <created>1635796253707</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1635796253707</updated>
+    </task>
+    <task id="LOCAL-00026" summary="detailed description on exception.">
+      <created>1635856623489</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1635856623489</updated>
+    </task>
+    <task id="LOCAL-00027" summary="fix a bug: when only need surface distance, it would raise error that dice did not exist  in dictionary.">
+      <created>1635859439898</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1635859439898</updated>
+    </task>
+    <task id="LOCAL-00028" summary="fix a small bug">
+      <created>1635859783696</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1635859783696</updated>
+    </task>
+    <task id="LOCAL-00029" summary="v1.0.18">
+      <created>1635859809101</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1635859809101</updated>
+    </task>
+    <task id="LOCAL-00030" summary="fix a bug if metrics is None.">
+      <created>1636925733686</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1636925733686</updated>
+    </task>
+    <task id="LOCAL-00031" summary="v1.0.19">
+      <created>1636925763389</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1636925763389</updated>
+    </task>
+    <task id="LOCAL-00032" summary="v1.0.20&#10;fix the bug: when image dimenstion is just 1, raise Exception.">
+      <created>1652981026316</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1652981026316</updated>
+    </task>
+    <task id="LOCAL-00033" summary="change print function to logging.info">
+      <created>1652981390627</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1652981390627</updated>
+    </task>
+    <task id="LOCAL-00034" summary="remove == to ensure all dependencies can be downloaded succesfully.">
+      <created>1652981552955</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1652981552955</updated>
+    </task>
+    <task id="LOCAL-00035" summary="change the example from 1d array to 2d array.">
+      <created>1652981801470</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1652981801470</updated>
+    </task>
+    <task id="LOCAL-00036" summary="v1.0.21&#10;add a test from readme file.">
+      <created>1652982013950</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1652982013950</updated>
+    </task>
+    <task id="LOCAL-00037" summary="v1.0.22&#10;fix minor bugs">
+      <created>1652982406267</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1652982406267</updated>
+    </task>
+    <task id="LOCAL-00038" summary="v1.0.23&#10;prepare to be tagged">
+      <created>1652984178486</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1652984178486</updated>
+    </task>
+    <task id="LOCAL-00039" summary="v1.0.24">
+      <created>1652984598033</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1652984598033</updated>
+    </task>
+    <task id="LOCAL-00040" summary="v1.0.25&#10;setup.py automatically install dependencies.">
+      <created>1652989404971</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1652989404971</updated>
+    </task>
+    <task id="LOCAL-00041" summary="v1.0.26&#10;setup.py automatically install dependencies.">
+      <created>1652989837064</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1652989837064</updated>
+    </task>
+    <task id="LOCAL-00042" summary="v1.0.27&#10;fix a bug: when metrics is a string, like 'msd', error would occured.">
+      <created>1652990607377</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1652990607377</updated>
+    </task>
+    <task id="LOCAL-00043" summary="v1.0.27&#10;fix a bug: when metrics is a string, like 'msd', error would occured.">
+      <created>1652990632828</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1652990632828</updated>
+    </task>
+    <task id="LOCAL-00044" summary="v1.0.28&#10;add new feature: allow numpy.ndarray to receive custom spacing.">
+      <created>1654634960147</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1654634960147</updated>
+    </task>
+    <task id="LOCAL-00045" summary="v1.0.28&#10;add new feature: allow numpy.ndarray to receive custom spacing.">
+      <created>1654635353444</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1654635353444</updated>
+    </task>
+    <task id="LOCAL-00046" summary="v1.0.28&#10;add new feature: allow numpy.ndarray to receive custom spacing.">
+      <created>1654636025162</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1654636025162</updated>
+    </task>
+    <task id="LOCAL-00047" summary="v1.0.29">
+      <created>1654636420537</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1654636420537</updated>
+    </task>
+    <task id="LOCAL-00048" summary="v1.0.30">
+      <created>1654638341069</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1654638341069</updated>
+    </task>
+    <task id="LOCAL-00049" summary="fix a bug: spacing should be cast to np.float64">
+      <created>1655482863800</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1655482863800</updated>
+    </task>
+    <task id="LOCAL-00050" summary="v1.0.31">
+      <created>1655482888041</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1655482888042</updated>
+    </task>
+    <task id="LOCAL-00051" summary="add testing file for spacing">
+      <created>1655718158920</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1655718158920</updated>
+    </task>
+    <task id="LOCAL-00052" summary="minor changes: from 'is' to '=='">
+      <created>1655730091054</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1655730091054</updated>
+    </task>
+    <task id="LOCAL-00053" summary="fix the 'fully_connected' bug">
+      <created>1655730264607</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1655730264608</updated>
+    </task>
+    <task id="LOCAL-00054" summary="v1.0.32">
+      <created>1655730500807</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1655730500807</updated>
+    </task>
+    <task id="LOCAL-00055" summary="update the comparison with medpy">
+      <created>1660574727177</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1660574727177</updated>
+    </task>
+    <task id="LOCAL-00056" summary="v1.0.33 update the comparison with medpy">
+      <created>1660574783247</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1660574783247</updated>
+    </task>
+    <task id="LOCAL-00057" summary="v1.0.34 fix typo">
+      <created>1660640534386</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1660640534386</updated>
+    </task>
+    <task id="LOCAL-00058" summary="add OSCS security badge.">
+      <created>1660641368027</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1660641368027</updated>
+    </task>
+    <task id="LOCAL-00059" summary="v1.0.35 change the requirements load method">
+      <created>1660645302105</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1660645302105</updated>
+    </task>
+    <task id="LOCAL-00060" summary="v1.0.36 fix bug on test coverage.">
+      <created>1660731324214</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1660731324214</updated>
+    </task>
+    <task id="LOCAL-00061" summary="tune format">
+      <created>1660739760449</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1660739760449</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,29 +592,133 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="init repo" />
-    <MESSAGE value="Seconda commit, update readme" />
-    <MESSAGE value="update readme" />
-    <MESSAGE value="add function to resolve metrics_type and filename." />
-    <MESSAGE value="add unit test, add the support to .mha files." />
-    <MESSAGE value="use myutil as the external package for some common medical image operations." />
-    <MESSAGE value="add the support of .nii and .nii.gz" />
-    <MESSAGE value="add type hinting" />
-    <MESSAGE value="add model name in __all__" />
-    <MESSAGE value="v1.0.4" />
-    <option name="LAST_COMMIT_MESSAGE" value="v1.0.4" />
+    <MESSAGE value="remove == to ensure all dependencies can be downloaded succesfully." />
+    <MESSAGE value="change the example from 1d array to 2d array." />
+    <MESSAGE value="v1.0.21&#10;add a test from readme file." />
+    <MESSAGE value="v1.0.22&#10;fix minor bugs" />
+    <MESSAGE value="v1.0.23&#10;prepare to be tagged" />
+    <MESSAGE value="v1.0.24" />
+    <MESSAGE value="v1.0.25&#10;setup.py automatically install dependencies." />
+    <MESSAGE value="v1.0.26&#10;setup.py automatically install dependencies." />
+    <MESSAGE value="v1.0.27&#10;fix a bug: when metrics is a string, like 'msd', error would occured." />
+    <MESSAGE value="v1.0.28&#10;add new feature: allow numpy.ndarray to receive custom spacing." />
+    <MESSAGE value="v1.0.29" />
+    <MESSAGE value="v1.0.30" />
+    <MESSAGE value="fix a bug: spacing should be cast to np.float64" />
+    <MESSAGE value="v1.0.31" />
+    <MESSAGE value="add testing file for spacing" />
+    <MESSAGE value="minor changes: from 'is' to '=='" />
+    <MESSAGE value="fix the 'fully_connected' bug" />
+    <MESSAGE value="v1.0.32" />
+    <MESSAGE value="update the comparison with medpy" />
+    <MESSAGE value="v1.0.33 update the comparison with medpy" />
+    <MESSAGE value="v1.0.34 fix typo" />
+    <MESSAGE value="add OSCS security badge." />
+    <MESSAGE value="v1.0.35 change the requirements load method" />
+    <MESSAGE value="v1.0.36 fix bug on test coverage." />
+    <MESSAGE value="tune format" />
+    <option name="LAST_COMMIT_MESSAGE" value="tune format" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="323" y="47" key="SettingsEditor" timestamp="1624793282607">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="438" y="72" key="#Deployment" timestamp="1654637090616">
+      <screen x="84" y="0" width="1522" height="826" />
     </state>
-    <state x="318" y="41" key="SettingsEditor/0.0.1512.759@0.0.1512.759" timestamp="1624659876272" />
-    <state x="323" y="47" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1624793282607" />
-    <state x="379" y="145" key="Vcs.Push.Dialog.v2" timestamp="1624659881091">
-      <screen x="0" y="0" width="1512" height="759" />
+    <state x="438" y="72" key="#Deployment/84.0.1522.826@84.0.1522.826" timestamp="1654637090616" />
+    <state x="522" y="95" key="#Options" timestamp="1654637102475">
+      <screen x="84" y="0" width="1522" height="826" />
     </state>
-    <state x="372" y="147" key="Vcs.Push.Dialog.v2/0.0.1483.769@0.0.1483.769" timestamp="1624540895388" />
-    <state x="379" y="145" key="Vcs.Push.Dialog.v2/0.0.1512.759@0.0.1512.759" timestamp="1624659881091" />
+    <state x="522" y="95" key="#Options/84.0.1522.826@84.0.1522.826" timestamp="1654637102475" />
+    <state x="301" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1654638956272">
+      <screen x="84" y="0" width="1522" height="826" />
+    </state>
+    <state x="301" y="68" key="#com.intellij.execution.impl.EditConfigurationsDialog/84.0.1522.826@84.0.1522.826" timestamp="1654638956272" />
+    <state x="627" y="168" key="FileChooserDialogImpl" timestamp="1654640656583">
+      <screen x="84" y="0" width="1522" height="826" />
+    </state>
+    <state x="627" y="168" key="FileChooserDialogImpl/84.0.1522.826@84.0.1522.826" timestamp="1654640656583" />
+    <state width="854" height="266" key="GridCell.Tab.0.bottom" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.0.bottom/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.0.bottom/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="1475" height="379" key="GridCell.Tab.0.bottom/84.0.1518.810@84.0.1518.810" timestamp="1652989839728" />
+    <state width="823" height="234" key="GridCell.Tab.0.bottom/84.0.1522.826@84.0.1522.826" timestamp="1654640658330" />
+    <state width="995" height="368" key="GridCell.Tab.0.bottom/84.0.1836.1200/-1618.-86.1618.1050@84.0.1836.1200" timestamp="1656078703205" />
+    <state width="854" height="266" key="GridCell.Tab.0.center" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.0.center/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.0.center/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="1475" height="379" key="GridCell.Tab.0.center/84.0.1518.810@84.0.1518.810" timestamp="1652989839727" />
+    <state width="823" height="234" key="GridCell.Tab.0.center/84.0.1522.826@84.0.1522.826" timestamp="1654640658330" />
+    <state width="995" height="368" key="GridCell.Tab.0.center/84.0.1836.1200/-1618.-86.1618.1050@84.0.1836.1200" timestamp="1656078703204" />
+    <state width="854" height="266" key="GridCell.Tab.0.left" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.0.left/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.0.left/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="1475" height="379" key="GridCell.Tab.0.left/84.0.1518.810@84.0.1518.810" timestamp="1652989839727" />
+    <state width="823" height="234" key="GridCell.Tab.0.left/84.0.1522.826@84.0.1522.826" timestamp="1654640658329" />
+    <state width="995" height="368" key="GridCell.Tab.0.left/84.0.1836.1200/-1618.-86.1618.1050@84.0.1836.1200" timestamp="1656078703203" />
+    <state width="854" height="266" key="GridCell.Tab.0.right" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.0.right/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.0.right/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="1475" height="379" key="GridCell.Tab.0.right/84.0.1518.810@84.0.1518.810" timestamp="1652989839727" />
+    <state width="823" height="234" key="GridCell.Tab.0.right/84.0.1522.826@84.0.1522.826" timestamp="1654640658330" />
+    <state width="995" height="368" key="GridCell.Tab.0.right/84.0.1836.1200/-1618.-86.1618.1050@84.0.1836.1200" timestamp="1656078703205" />
+    <state width="854" height="266" key="GridCell.Tab.1.bottom" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.1.bottom/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.1.bottom/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="825" height="262" key="GridCell.Tab.1.bottom/84.0.1522.826@84.0.1522.826" timestamp="1654637154850" />
+    <state width="854" height="266" key="GridCell.Tab.1.center" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.1.center/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.1.center/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="825" height="262" key="GridCell.Tab.1.center/84.0.1522.826@84.0.1522.826" timestamp="1654637154850" />
+    <state width="854" height="266" key="GridCell.Tab.1.left" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.1.left/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.1.left/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="825" height="262" key="GridCell.Tab.1.left/84.0.1522.826@84.0.1522.826" timestamp="1654637154850" />
+    <state width="854" height="266" key="GridCell.Tab.1.right" timestamp="1660739960622">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state width="854" height="266" key="GridCell.Tab.1.right/84.0.1145.691@84.0.1145.691" timestamp="1660726168261" />
+    <state width="854" height="266" key="GridCell.Tab.1.right/84.0.1452.864@84.0.1452.864" timestamp="1660739960622" />
+    <state width="825" height="262" key="GridCell.Tab.1.right/84.0.1522.826@84.0.1522.826" timestamp="1654637154850" />
+    <state x="343" y="60" key="SettingsEditor" timestamp="1660397467706">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state x="343" y="60" key="SettingsEditor/84.0.1452.864@84.0.1452.864" timestamp="1660397467706" />
+    <state x="355" y="58" key="SettingsEditor/84.0.1522.826@84.0.1522.826" timestamp="1654638855678" />
+    <state x="411" y="84" key="SettingsEditor/84.0.1836.1200/-1618.-86.1618.1050@84.0.1836.1200" timestamp="1655717346150" />
+    <state x="660" y="345" key="VCS.ChangelistChooser" timestamp="1660574744730">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state x="660" y="345" key="VCS.ChangelistChooser/84.0.1452.864@84.0.1452.864" timestamp="1660574744730" />
+    <state x="421" y="148" key="Vcs.Push.Dialog.v2" timestamp="1660731346607">
+      <screen x="84" y="0" width="1452" height="864" />
+    </state>
+    <state x="350" y="118" key="Vcs.Push.Dialog.v2/84.0.1145.691@84.0.1145.691" timestamp="1660645320663" />
+    <state x="421" y="148" key="Vcs.Push.Dialog.v2/84.0.1452.864@84.0.1452.864" timestamp="1660731346607" />
+    <state x="436" y="138" key="Vcs.Push.Dialog.v2/84.0.1518.810@84.0.1518.810" timestamp="1652990663366" />
+    <state x="437" y="141" key="Vcs.Push.Dialog.v2/84.0.1522.826@84.0.1522.826" timestamp="1654638362397" />
+    <state x="-1243" y="93" key="Vcs.Push.Dialog.v2/84.0.1836.1200/-1618.-86.1618.1050@-1618.-86.1618.1050" timestamp="1655482934943" />
+    <state x="510" y="205" key="Vcs.Push.Dialog.v2/84.0.1836.1200/-1618.-86.1618.1050@84.0.1836.1200" timestamp="1655730515008" />
+    <state x="656" y="298" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration" timestamp="1654637207733">
+      <screen x="84" y="0" width="1522" height="826" />
+    </state>
+    <state x="656" y="298" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/84.0.1522.826@84.0.1522.826" timestamp="1654637207733" />
+    <state x="796" y="264" width="298" height="539" key="ftp.server.browser" timestamp="1654636734990">
+      <screen x="84" y="0" width="1522" height="826" />
+    </state>
+    <state x="796" y="264" width="298" height="539" key="ftp.server.browser/84.0.1522.826@84.0.1522.826" timestamp="1654636734990" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -323,7 +758,31 @@
           <line>57</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/seg_metrics/seg_metrics.py</url>
+          <line>221</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/setup.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/runner.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/segmentation_metrics$runner.coverage" NAME="runner Coverage Results" MODIFIED="1660725902152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/segmentation_metrics$practice.coverage" NAME="practice Coverage Results" MODIFIED="1654640217803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/segmentation_metrics$Unittests_in_test_write_metrics_itk_or_array_py.coverage" NAME="Unittests in test_write_metrics_itk_or_array.py Coverage Results" MODIFIED="1634324254257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/segmentation_metrics$Unittests_in_test_spacing_py.coverage" NAME="Unittests in test_spacing.py Coverage Results" MODIFIED="1655730147803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/segmentation_metrics$test_write_metrics_itk_or_array.coverage" NAME="test_write_metrics_itk_or_array Coverage Results" MODIFIED="1635859749453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/segmentation_metrics$test_save_and_load_itk.coverage" NAME="test_save_and_load_itk Coverage Results" MODIFIED="1634416179339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/segmentation_metrics$setup.coverage" NAME="setup Coverage Results" MODIFIED="1660397909944" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
