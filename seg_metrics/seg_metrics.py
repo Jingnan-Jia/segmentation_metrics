@@ -1,6 +1,6 @@
 import copy
 import os
-from typing import Dict, Union, Optional, Sequence
+from typing import Dict, Union, Optional, Sequence, Set
 import SimpleITK as sitk
 import matplotlib.pyplot as plt
 import numpy as np
@@ -220,10 +220,10 @@ def get_metrics_dict_all_labels(labels: Sequence,
     return metrics_dict
 
 
-def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
-               pred_path: Union[str, pathlib.Path, Sequence, None],
-               gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None],
-               pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None]) -> None:
+def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None]=None,
+               pred_path: Union[str, pathlib.Path, Sequence, None]=None,
+               gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None]=None,
+               pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None]=None) -> None:
     if type(gdth_img) is not type(pred_img):  # gdth and pred should have the same type
         raise Exception(f"gdth_array is {type(gdth_img)} but pred_array is {type(pred_img)}. "
                         f"They should be the same type.")
@@ -238,11 +238,11 @@ def type_check(gdth_path: Union[str, pathlib.Path, Sequence, None],
     assert any(isinstance(gdth_img, tp) for tp in [np.ndarray, sitk.SimpleITK.Image, Sequence, type(None)])
 
     if isinstance(gdth_path, Sequence):
-        assert any(isinstance(gdth_path, tp) for tp in [str, pathlib.Path])
+        assert any(isinstance(gdth_p, tp) for tp in [str, pathlib.Path] for gdth_p in gdth_path)
+
     if isinstance(gdth_img, Sequence):
         if type(gdth_img[0]) not in [np.ndarray, sitk.SimpleITK.Image]:
-            raise Exception(
-                f"gdth_img[0]'s type should be ndarray or SimpleITK.SimpleITK.Image, but get {type(gdth_img)}")
+            raise Exception(f"gdth_img[0]'s type should be ndarray or SimpleITK.SimpleITK.Image, but get {type(gdth_img)}")
 
 
 def write_metrics(labels: Sequence,
@@ -251,7 +251,7 @@ def write_metrics(labels: Sequence,
                   csv_file: Union[str, pathlib.Path, None] = None,
                   gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
-                  metrics: Union[Sequence[str], set[str], None] = None,
+                  metrics: Union[Sequence, Set, None] = None,
                   verbose: bool = True,
                   spacing: Union[Sequence, np.ndarray, None] = None,
                   fully_connected=True):
