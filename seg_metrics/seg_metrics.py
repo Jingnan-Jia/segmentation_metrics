@@ -45,14 +45,13 @@ def computeQualityMeasures(lP: np.ndarray,
     labelTrue = sitk.GetImageFromArray(lT, isVector=False)
     labelTrue.SetSpacing(np.array(spacing).astype(np.float64))  # spacing order (x, y, z)
 
-    voxel_metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs']
+    voxel_metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'TP', 'TN', 'FP', 'FN']
     distance_metrics = ['hd', 'hd95', 'msd', 'mdsd', 'stdsd']
     if metrics_names is None:
         metrics_names = {'dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd',
-                         'stdsd'}
+                         'stdsd', 'TP', 'TN', 'FP', 'FN'}
     else:
         metrics_names = set(metrics_names)
-    # print('metrics0', metrics_names)
 
     # to save time, we need to determine which metrics we need to compute
     if set(voxel_metrics).intersection(metrics_names) or not metrics_names:
@@ -92,6 +91,11 @@ def computeQualityMeasures(lP: np.ndarray,
         dicecomputer = sitk.LabelOverlapMeasuresImageFilter()
         dicecomputer.Execute(labelTrue > 0.5, labelPred > 0.5)
 
+        quality["TP"] = tp
+        quality["TN"] = tn
+        quality["FP"] = fp
+        quality["FN"] = fn
+
         quality["dice"] = dice
         quality["jaccard"] = jaccard
         quality["precision"] = precision
@@ -99,11 +103,8 @@ def computeQualityMeasures(lP: np.ndarray,
         quality["fnr"] = fnr
         quality["fpr"] = fpr
         quality["vs"] = dicecomputer.GetVolumeSimilarity()
-    # print('set(distance_metrics).intersection(metrics)', set(distance_metrics).intersection(metrics_names))
-    # print('set(distance_metrics)', set(distance_metrics))
-    # print('metrics', metrics_names)
+
     if set(distance_metrics).intersection(metrics_names) or not metrics_names:
-        slice_idx = 300
         # Surface distance measures
         signed_distance_map = sitk.SignedMaurerDistanceMap(labelTrue > 0.5, squaredDistance=False,
                                                            useImageSpacing=True)  # It need to be adapted.
@@ -168,7 +169,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
     """
     if metrics_names is None:
         metrics_names = {'dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd',
-                         'stdsd'}
+                         'stdsd', 'TP', 'TN', 'FP', 'FN'}
     if type(metrics_names) is str:
         metrics_names = [metrics_names]
     hd_list = []
@@ -184,6 +185,11 @@ def get_metrics_dict_all_labels(labels: Sequence,
     fpr_list = []
     fnr_list = []
 
+    TP_list = []
+    TN_list = []
+    FP_list = []
+    FN_list = []
+
     label_list = [lb for lb in labels]
 
     metrics_dict_all_labels = {'label': label_list,
@@ -198,13 +204,17 @@ def get_metrics_dict_all_labels(labels: Sequence,
                                'msd': msd_list,
                                'mdsd': mdsd_list,
                                'stdsd': stdsd_list,
-                               'hd95': hd95_list}
+                               'hd95': hd95_list,
+
+                               'TP':TP_list,
+                               'TN':TN_list,
+                               'FP':FP_list,
+                               'FN':FN_list}
 
     for i, label in enumerate(labels):
         logging.info('\nstart to get metrics for label: ', label)
         pred_per = pred[..., i]  # select onlabel
         gdth_per = gdth[..., i]
-        # print('metrics-1', metrics_names)
         metrics = computeQualityMeasures(pred_per, gdth_per,
                                          spacing=spacing,
                                          metrics_names=metrics_names,
@@ -274,7 +284,7 @@ def write_metrics(labels: Sequence,
     output_list = []
     metrics_dict_all_labels = None
     if metrics is None:
-        metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd']
+        metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd', 'TP', 'TN', 'FP', 'FN']
 
     if gdth_path is not None:
         if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
