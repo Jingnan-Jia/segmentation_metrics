@@ -22,6 +22,7 @@ This library computes the following performance metrics for segmentation:
 - False negtive rate
 - Volume similarity
 
+
 The equations for these metrics can be seen in the [wikipedia](https://en.wikipedia.org/wiki/Precision_and_recall).
 
 ### Surface Distance based metrics (with spacing as default)
@@ -115,19 +116,19 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
 By passing the following parameters to select specific metrics.
 
 ```python
-- dice:     Dice (F-1)
-- jaccard:  Jaccard
+- dice:         Dice (F-1)
+- jaccard:      Jaccard
 - precision:    Precision
-- recall:   Recall
-- fpr:      False positive rate
-- fnr:      False negtive rate
-- vs:       Volume similarity
+- recall:       Recall
+- fpr:          False positive rate
+- fnr:          False negtive rate
+- vs:           Volume similarity
 
-- hd:       Hausdorff distance
-- hd95:     Hausdorff distance 95% percentile
-- msd:      Mean (Average) surface distance
-- mdsd:     Median surface distance
-- stdsd:    Std surface distance
+- hd:           Hausdorff distance
+- hd95:         Hausdorff distance 95% percentile
+- msd:          Mean (Average) surface distance
+- mdsd:         Median surface distance
+- stdsd:        Std surface distance
 ```
 
 For example:
@@ -186,6 +187,19 @@ metrics = sg.write_metrics(labels=[1,2,3],
 In 2D image, fullyconnected means 8 neighbor points, while faceconnected means 4 neighbor points.
 In 3D image, fullyconnected means 26 neighbor points, while faceconnected means 6 neighbor points.
 
+
+# How to obtain more metrics? like "False omission rate" or "Accuracy"?
+A great number of different metrics, like "False omission rate" or "Accuracy", could be derived from some the [confusion matrics](https://en.wikipedia.org/wiki/Confusion_matrix). To calculate more metrics or design custom metrics, use `TPTNFPFN=True` to return the number of voxels/pixels of true positive (TP), true negative (TN), false positive (FP), false negative (FN) predictions. For example,
+```python
+metrics = sg.write_metrics(
+                        gdth_img=gdth_img,
+                        pred_img=pred_img,
+                        TPTNFPFN=True) 
+tp, tn, fp, fn = metrics['TP'], metrics['TN'], metrics['FP'], metrics['FN']
+false_omission_rate = fn/(fn+tn)
+accuracy = (tp + tn)/(tp + tn + fp + fn)
+```          
+
 # Comparision with medpy
 `medpy` also provide functions to calculate metrics for medical images. But `seg-metrics`     
 has several advantages.
@@ -197,6 +211,8 @@ notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFc
 `.csv` file in good manner, but `medpy` only provides binary segmentation metrics. Comparision can be found in this [jupyter 
 notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFcxDr#scrollTo=mDWvyxW7VExd).
  
+
+
 If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. 
 I would also appreciate it if you cite the package in your publication. (**Note:** This package is **NOT** approved for clinical use and is intended for research use only. )
 
