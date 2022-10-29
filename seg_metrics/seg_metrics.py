@@ -91,11 +91,6 @@ def computeQualityMeasures(lP: np.ndarray,
         dicecomputer = sitk.LabelOverlapMeasuresImageFilter()
         dicecomputer.Execute(labelTrue > 0.5, labelPred > 0.5)
 
-        quality["TP"] = tp
-        quality["TN"] = tn
-        quality["FP"] = fp
-        quality["FN"] = fn
-
         quality["dice"] = dice
         quality["jaccard"] = jaccard
         quality["precision"] = precision
@@ -103,6 +98,11 @@ def computeQualityMeasures(lP: np.ndarray,
         quality["fnr"] = fnr
         quality["fpr"] = fpr
         quality["vs"] = dicecomputer.GetVolumeSimilarity()
+
+        quality["TP"] = tp
+        quality["TN"] = tn
+        quality["FP"] = fp
+        quality["FN"] = fn
 
     if set(distance_metrics).intersection(metrics_names) or not metrics_names:
         # Surface distance measures
