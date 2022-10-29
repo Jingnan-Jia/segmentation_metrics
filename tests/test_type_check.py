@@ -21,20 +21,26 @@ TEST_CASE2 = [{
 "pred_path": ['/data/pred.mha', 'aa']
 }]
 
+# wrong cases
 TEST_CASE3 = [{
 "gdth_path": None,
 "pred_path": None
 }]
 
-# wrong cased
-
+TEST_CASE4 = [{
+"gdth_path": 'aaa',
+"pred_path": None
+}]
 
 class Test_seg_metrics(unittest.TestCase):
-    @parameterized.expand([TEST_CASE1, TEST_CASE2, TEST_CASE3])
+    @parameterized.expand([TEST_CASE1, TEST_CASE2])
     def test_type_check(self, path):
-        
         self.assertIsNone(sg.type_check(gdth_path=path['gdth_path'], pred_path=path['pred_path']))
-        
+
+    @parameterized.expand([TEST_CASE3, TEST_CASE4])
+    def test_type_check_wrong(self, path):
+        with self.assertRaises(Exception):
+            sg.type_check(gdth_path=path['gdth_path'], pred_path=path['pred_path'])
 
 
 if __name__ == '__main__':
