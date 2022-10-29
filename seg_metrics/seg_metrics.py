@@ -155,7 +155,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
                                 gdth: np.ndarray,
                                 pred: np.ndarray,
                                 spacing: np.ndarray,
-                                metrics_names: Union[Sequence, set, None] = None,
+                                metrics_names: Union[Sequence, set],
                                 fullyConnected: bool = True) -> Dict[str, list]:
     """
 
@@ -167,9 +167,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
     :param fullyConnected: if apply fully connected border during the calculation of surface distance. Full connectivity produces thicker contours. 
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
-    if metrics_names is None:
-        metrics_names = {'dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd',
-                         'stdsd', 'TP', 'TN', 'FP', 'FN'}
+
     if type(metrics_names) is str:
         metrics_names = [metrics_names]
     hd_list = []
@@ -264,7 +262,8 @@ def write_metrics(labels: Sequence,
                   metrics: Union[Sequence, Set, None] = None,
                   verbose: bool = True,
                   spacing: Union[Sequence, np.ndarray, None] = None,
-                  fully_connected=True):
+                  fully_connected: bool = True,
+                  TPTNFPFN: bool = False):
     """
 
     :param labels:  exclude background
@@ -277,6 +276,7 @@ def write_metrics(labels: Sequence,
     :param verbose: show the animated progress bar
     :param spacing: spacing of input images
     :param fully_connected: whether apply fully connected border during the calculation of surface distance.
+    :param TPTNFPFN: whether to return the number of voxels/pixels for true positive, false positive, true negative, false negative predictions.
     :return: metrics: a sequence which save metrics
     """
     type_check(gdth_path, pred_path, gdth_img, pred_img)
@@ -284,7 +284,9 @@ def write_metrics(labels: Sequence,
     output_list = []
     metrics_dict_all_labels = None
     if metrics is None:
-        metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd', 'TP', 'TN', 'FP', 'FN']
+        metrics = ['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd']
+    if TPTNFPFN:
+        metrics.extend(['TP', 'TN', 'FP', 'FN'])
 
     if gdth_path is not None:
         if os.path.isfile(gdth_path):  # gdth is a file instead of a directory
