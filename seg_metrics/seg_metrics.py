@@ -107,13 +107,10 @@ def computeQualityMeasures(lP: np.ndarray,
         # Surface distance measures
         signed_distance_map = sitk.SignedMaurerDistanceMap(labelTrue > 0.5, squaredDistance=False,
                                                            useImageSpacing=True)  # It need to be adapted.
-        # show_itk(signed_distance_map, slice_idx)
 
         ref_distance_map = sitk.Abs(signed_distance_map)
-        # show_itk(ref_distance_map, slice_idx)
 
         ref_surface = sitk.LabelContour(labelTrue > 0.5, fullyConnected=fullyConnected)
-        # show_itk(ref_surface, slice_idx)
         ref_surface_array = sitk.GetArrayViewFromImage(ref_surface)
 
         statistics_image_filter = sitk.StatisticsImageFilter()
@@ -123,20 +120,15 @@ def computeQualityMeasures(lP: np.ndarray,
 
         signed_distance_map_pred = sitk.SignedMaurerDistanceMap(labelPred > 0.5, squaredDistance=False,
                                                                 useImageSpacing=True)
-        # show_itk(signed_distance_map_pred, slice_idx)
 
         seg_distance_map = sitk.Abs(signed_distance_map_pred)
-        # show_itk(seg_distance_map, slice_idx)
 
         seg_surface = sitk.LabelContour(labelPred > 0.5, fullyConnected=fullyConnected)
-        # show_itk(seg_surface, slice_idx)
         seg_surface_array = sitk.GetArrayViewFromImage(seg_surface)
 
         seg2ref_distance_map = ref_distance_map * sitk.Cast(seg_surface, sitk.sitkFloat32)
-        # show_itk(seg2ref_distance_map, slice_idx)
 
         ref2seg_distance_map = seg_distance_map * sitk.Cast(ref_surface, sitk.sitkFloat32)
-        # show_itk(ref2seg_distance_map, slice_idx)
 
         statistics_image_filter.Execute(seg_surface > 0.5)
 
@@ -171,7 +163,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
     :param pred: the same as above
     :param spacing: spacing order should be (x, y, z) !!!
     :param metrics_names: a list of metrics
-    :param fullyConnected: if apply fully connected border during the calculation of surface distance.
+    :param fullyConnected: if apply fully connected border during the calculation of surface distance. Full connectivity produces thicker contours. 
     :return: metrics_dict_all_labels a dict which contain all metrics
     """
     if metrics_names is None:
@@ -221,35 +213,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
         for k, v in metrics_dict_all_labels.items():
             if k in metrics_names:
                 v.append(metrics[k])
-    #     if "jaccard" in metrics.keys():
-    #     jaccard_list.append(metrics["jaccard"])
-    #     precision_list.append(metrics["precision"])
-    #     recall_list.append(metrics["recall"])
-    #     fnr_list.append(metrics["fnr"])
-    #     fpr_list.append(metrics["fpr"])
-    #     vs_list.append(metrics["vs"])
-    #
-    #     msd_list.append(metrics["msd"])
-    #     mdsd_list.append(metrics["mdsd"])
-    #     stdsd_list.append(metrics["stdsd"])
-    #     hd95_list.append(metrics["hd95"])
-    #     hd_list.append(metrics["hd"])
-    #
-    # label_list = [lb for lb in labels]
-    #
-    # metrics_dict_all_labels = {'label': label_list,
-    #                            'dice': dice_list,
-    #                            'jaccard': jaccard_list,
-    #                            'precision': precision_list,
-    #                            'recall': recall_list,
-    #                            'fpr': fpr_list,
-    #                            'fnr': fnr_list,
-    #                            'vs': vs_list,
-    #                            'hd': hd_list,
-    #                            'msd': msd_list,
-    #                            'mdsd': mdsd_list,
-    #                            'stdsd': stdsd_list,
-    #                            'hd95': hd95_list}
+
 
     metrics_dict = {k: v for k, v in metrics_dict_all_labels.items() if v}  # remove empty values
 
@@ -287,18 +251,22 @@ def write_metrics(labels: Sequence,
                   csv_file: Union[str, pathlib.Path, None] = None,
                   gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
-                  metrics: Union[Sequence, set, None] = None,
+                  metrics: Union[Sequence[str], set[str], None] = None,
                   verbose: bool = True,
                   spacing: Union[Sequence, np.ndarray, None] = None,
                   fully_connected=True):
     """
 
     :param labels:  exclude background
-    :param gdth_path: a absolute directory path or file name
-    :param pred_path: a absolute directory path or file name
-    :param gdth_img: np.ndarray for ground truth
-    :param pred_img: np.ndarray for prediction
+    :param gdth_path: absolute path of a directory  or file 
+    :param pred_path: absolute path of a directory  or file 
     :param csv_file: filename to save the metrics
+    :param gdth_img: `np.ndarray` for ground truth
+    :param pred_img: `np.ndarray` for prediction
+    :param metrics: metric names
+    :param verbose: show the animated progress bar
+    :param spacing: spacing of input images
+    :param fully_connected: whether apply fully connected border during the calculation of surface distance.
     :return: metrics: a sequence which save metrics
     """
     type_check(gdth_path, pred_path, gdth_img, pred_img)
