@@ -10,6 +10,7 @@ This is a simple package to compute different metrics for **Medical** image segm
 ## Summary
 To assess the segmentation performance, there are several different methods. Two main methods are volume-based metrics and distance-based metrics.
 
+
 ## Metrics included
 This library computes the following performance metrics for segmentation:
  
@@ -51,6 +52,11 @@ For each contour voxel of the segmented volume (A), the Euclidean distance from 
 ```shell
 $ pip install seg-metrics
 ```
+
+## Getting started
+Examples at [Tutorial](http://127.0.0.1:5500/docs/build/html/tutorial.html)
+Technical documentation is available at [Documentation](http://127.0.0.1:5500/docs/build/html/index.html)
+
 
 ## Usage
 At first, import the package:
