@@ -1,6 +1,12 @@
-Tutorial
-===========
+# Tutorial
 
+Here are some examples about how to use this package.
+
+## Usage
+At first, import the package:
+```python
+import seg_metrics.seg_metrics as sg
+```
 
 
 ### Evaluate two batches of images with same filenames from two different folders
@@ -118,7 +124,7 @@ metrics = sg.write_metrics(labels=labels[1:],  # exclude background if needed
                   metrics='msd')  
 ```
 
-#### About the calculation of surface distance
+### About the calculation of surface distance
 The default surface distance is calculated based on **fullyConnected** border. To change the default connected type, 
 you can set argument `fullyConnected` as `False` as follows.
 ```python
@@ -132,7 +138,7 @@ In 2D image, fullyconnected means 8 neighbor points, while faceconnected means 4
 In 3D image, fullyconnected means 26 neighbor points, while faceconnected means 6 neighbor points.
 
 
-# How to obtain more metrics? like "False omission rate" or "Accuracy"?
+## How to obtain more metrics? like "False omission rate" or "Accuracy"?
 A great number of different metrics, like "False omission rate" or "Accuracy", could be derived from some the [confusion matrics](https://en.wikipedia.org/wiki/Confusion_matrix). To calculate more metrics or design custom metrics, use `TPTNFPFN=True` to return the number of voxels/pixels of true positive (TP), true negative (TN), false positive (FP), false negative (FN) predictions. For example,
 ```python
 metrics = sg.write_metrics(
