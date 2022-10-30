@@ -1,6 +1,6 @@
 import copy
 import os
-from typing import Dict, Union, Optional, Sequence, Set
+from typing import Dict, Union, Optional, Sequence, Set, List
 import SimpleITK as sitk
 import matplotlib.pyplot as plt
 import numpy as np
@@ -263,21 +263,21 @@ def write_metrics(labels: Sequence,
                   verbose: bool = True,
                   spacing: Union[Sequence, np.ndarray, None] = None,
                   fully_connected: bool = True,
-                  TPTNFPFN: bool = False):
+                  TPTNFPFN: bool = False) -> Union[List[Dict], Dict]:
     """
 
-    :param labels:  exclude background
-    :param gdth_path: absolute path of a directory  or file 
-    :param pred_path: absolute path of a directory  or file 
-    :param csv_file: filename to save the metrics
-    :param gdth_img: `np.ndarray` for ground truth
-    :param pred_img: `np.ndarray` for prediction
-    :param metrics: metric names
-    :param verbose: show the animated progress bar
-    :param spacing: spacing of input images
-    :param fully_connected: whether apply fully connected border during the calculation of surface distance.
-    :param TPTNFPFN: whether to return the number of voxels/pixels for true positive, false positive, true negative, false negative predictions.
-    :return: metrics: a sequence which save metrics
+    :param labels:  a list of labels to performe the calculation of metrics. Normally used to exclude background label
+    :param gdth_path: for ground truth, specify an absolute path of a directory or file, or a sequence of pathes of files
+    :param pred_path: for prediction, specify an absolute path of a directory or file, or a sequence of pathes of files
+    :param csv_file: filename to save the metrics. Do not save metrics if it is `None`. Default is `None`
+    :param gdth_img: for ground truth, specify a (sequence of) `np.ndarray` or SimpleITK.Image
+    :param pred_img: for prediction, specify a (sequence of) `np.ndarray` or SimpleITK.Image
+    :param metrics: metric names. Default is `['dice', 'jaccard', 'precision', 'recall', 'fpr', 'fnr', 'vs', 'hd', 'hd95', 'msd', 'mdsd', 'stdsd']`
+    :param verbose: whether to show the animated progress bar. Default is `True`
+    :param spacing: spacing of input images, a list of floating numbers with shape `(N, )` where `N` is the dimension of images.
+    :param fully_connected: whether to apply fully connected border during the calculation of surface distance.
+    :param TPTNFPFN: whether to return the number of voxels/pixels for true positive, false positive, true negative, false negative predictions. Default is `False`
+    :return: A dict or a list of dicts which store metrics
     """
     type_check(gdth_path, pred_path, gdth_img, pred_img)
     logging.info('start to calculate metrics (volume or distance) and write them to csv')
