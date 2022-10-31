@@ -280,6 +280,9 @@ def write_metrics(labels: Sequence,
     :return: A dict or a list of dicts which store metrics
     """
     type_check(gdth_path, pred_path, gdth_img, pred_img)
+    if not isinstance(labels, list):
+        raise TypeError(f"labels should be a list, but it is {type(labels)}. Even if you only want to evaluate one lable, please put it into a list.")
+
     logging.info('start to calculate metrics (volume or distance) and write them to csv')
     output_list = []
     metrics_dict_all_labels = None
