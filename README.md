@@ -43,6 +43,7 @@ $ pip install seg-metrics
 ```
 
 ## Getting started
+Tutorial is at the [Colab](https://colab.research.google.com/drive/1LUH9cozeeSdmn9W_WdwBjKnrhWb39dq_?usp=sharing).
 
 API reference is available at [Documentation](https://segmentation-metrics.readthedocs.io/en/latest/seg_metrics.html#seg_metrics.write_metrics)
 
