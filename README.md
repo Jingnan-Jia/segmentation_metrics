@@ -6,8 +6,9 @@
 [![Documentation Status](https://readthedocs.org/projects/segmentation-metrics/badge/?version=latest)](https://segmentation-metrics.readthedocs.io/en/latest/?badge=latest)
 [![OSCS Status](https://www.oscs1024.com/platform/badge/Jingnan-Jia/segmentation_metrics.svg?size=small)](https://www.oscs1024.com/project/Jingnan-Jia/segmentation_metrics?ref=badge_small)
 
-This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha`, `.nii`, `.nii.gz` or `.nrrd` BTW, if you need the support for more suffix, just let me know by creating new issues), and write them to csv file.
+This is a simple package to compute different metrics for **Medical** image segmentation(images with suffix `.mhd`, `.mha`, `.nii`, `.nii.gz` or `.nrrd` ), and write them to csv file.
 
+*BTW, if you need the support for more suffix, just let me know by creating new issues*
 ## Summary
 To assess the segmentation performance, there are several different methods. Two main methods are volume-based metrics and distance-based metrics.
 
