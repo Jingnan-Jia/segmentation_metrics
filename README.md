@@ -23,7 +23,7 @@ This library computes the following performance metrics for segmentation:
 - Recall
 - False positive rate
 - False negtive rate
-- Volume similarity
+- [Volume similarity](https://github.com/Jingnan-Jia/segmentation_metrics/blob/master/README_appendix.md#explanication-of-volume-similarity)
 
 The equations for these metrics can be seen in the [wikipedia](https://en.wikipedia.org/wiki/Precision_and_recall).
 
