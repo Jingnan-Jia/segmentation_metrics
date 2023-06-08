@@ -6,7 +6,7 @@ There is more than one defination for the volume similarity.
 $VS = 1 - \frac{|V_{pred}−V_{gdth}|}{V_{pred}+V_{gdth}}$ where $V_{pred}$ is the volume of prediction and $V_{gdth}$ is the volume of the ground truth. This defination is from [this paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4533825/#:~:text=Volume%20based%20metrics,the%20segments%20to%20indicate%20similarity.) It ranges from 0 to 1. Higher value means the size (volume) of the prediction is more similar with the size (volume) of the ground truth.
 
 2. The second defination is:
-$VS = \frac{2∗(V_{pred}−V_{gdth})}{V_{pred}+V_{gdth}}$. This defination is from [SimpleITK](http://insightsoftwareconsortium.github.io/SimpleITK-Notebooks/R_html/34_Segmentation_Evaluation.html). Negative VS means the volume of prediction is less than the volume of ground truth, which is called *underestimation*. Positive VS means the volume of prediction is greater than the volume of the ground truth, which is called *overestimation*.
+$VS = \frac{2∗(V_{pred}−V_{gdth})}{V_{pred}+V_{gdth}}$. This defination is from [SimpleITK](http://insightsoftwareconsortium.github.io/SimpleITK-Notebooks/R_html/34_Segmentation_Evaluation.html). Negative VS means the volume of prediction is less than the volume of ground truth, which is called **underestimation**. Positive VS means the volume of prediction is greater than the volume of the ground truth, which is called **overestimation**.
 
 
 
