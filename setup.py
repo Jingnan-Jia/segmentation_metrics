@@ -24,7 +24,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setuptools.setup(
     name="seg_metrics", # Replace with your own username
-    version="1.1.3",
+    version="1.1.4",
     author="Jingnan Jia",
     author_email="jiajingnan2222@gmail.com",
     description="A package to compute different segmentation metrics for 2D/3D medical images.",
