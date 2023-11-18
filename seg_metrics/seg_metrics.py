@@ -260,7 +260,7 @@ def write_metrics(labels: Sequence,
                   gdth_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   pred_img: Union[np.ndarray, sitk.SimpleITK.Image, Sequence, None] = None,
                   metrics: Union[Sequence, Set, None] = None,
-                  verbose: bool = True,
+                  verbose: bool = False,
                   spacing: Union[Sequence, np.ndarray, None] = None,
                   fully_connected: bool = True,
                   TPTNFPFN: bool = False) -> Union[List[Dict], Dict]:
