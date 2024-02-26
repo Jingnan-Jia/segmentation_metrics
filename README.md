@@ -218,7 +218,7 @@ I would also appreciate it if you cite the package in your publication. (**Note:
 # Citation
 If you use this software anywhere we would appreciate if you cite the following articles:
 
-    Jia, Jingnan, Marius Staring, and Berend C. Stoel. "seg-metrics: a Python package to compute segmentation metrics." _medRxiv_ (2024): 2024-02.
+Jia, Jingnan, Marius Staring, and Berend C. Stoel. "seg-metrics: a Python package to compute segmentation metrics." _medRxiv_ (2024): 2024-02.
 
     @article{jia2024seg,
       title={seg-metrics: a Python package to compute segmentation metrics},
