@@ -225,7 +225,6 @@ I would also appreciate it if you cite the package in your publication. (**Note:
         doi = {10.5281/zenodo.3995075}
     }
 
-or     
     @article{jia2024seg,
       title={seg-metrics: a Python package to compute segmentation metrics},
       author={Jia, Jingnan and Staring, Marius and Stoel, Berend C},
