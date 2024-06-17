@@ -104,10 +104,12 @@ def computeQualityMeasures(lP: np.ndarray,
                     logging.warning(f'Note: The ground truth of this image are all 1, so FPR is 0')
                     fpr = 0
                 else:
-                    precision = tp / pred_sum
-                    recall = tp / gdth_sum
-                    fnr = fn / (fn + tp )
                     fpr = fp / (fp + tn)
+                
+                precision = tp / pred_sum
+                recall = tp / gdth_sum
+                fnr = fn / (fn + tp)
+                    
                 
                 
        
