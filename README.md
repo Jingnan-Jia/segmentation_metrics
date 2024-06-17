@@ -215,16 +215,21 @@ notebook](https://colab.research.google.com/drive/1gLQghS1d_fWsaJs3G4Ip0GlZHEJFc
 If this repository helps you in anyway, show your love ❤️ by putting a ⭐ on this project. 
 I would also appreciate it if you cite the package in your publication. (**Note:** This package is **NOT** approved for clinical use and is intended for research use only. )
 
-# Bibtex
+# Citation
+If you use this software anywhere we would appreciate if you cite the following articles:
 
-    @misc{Jingnan,
-        title  = {A package to compute segmentation metrics: seg-metrics},
-        author = {Jingnan Jia},
-        url    = {https://github.com/Ordgod/segmentation_metrics}, 
-        year   = {2020}, 
-        doi = {10.5281/zenodo.3995075}
+Jia, Jingnan, Marius Staring, and Berend C. Stoel. "seg-metrics: a Python package to compute segmentation metrics." _medRxiv_ (2024): 2024-02.
+
+    @article{jia2024seg,
+      title={seg-metrics: a Python package to compute segmentation metrics},
+      author={Jia, Jingnan and Staring, Marius and Stoel, Berend C},
+      journal={medRxiv},
+      pages={2024--02},
+      year={2024},
+      publisher={Cold Spring Harbor Laboratory Press}
     }
 
+    
 
 
 
