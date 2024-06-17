@@ -78,16 +78,39 @@ def computeQualityMeasures(lP: np.ndarray,
 
         tp, fp, fn, tn = np.sum(tp_array), np.sum(fp_array), np.sum(fn_array), np.sum(tn_array)
 
-        smooth = 0.001
-        precision = tp / (pred_sum + smooth)
-        recall = tp / (gdth_sum + smooth)
+        # smooth = 0.001
+        
+        if (gdth_sum + pred_sum) == 0:
+            logging.warning(f'Note: Both ground truth and prediction of the image are 0, dice, jaccard, precision and recall are regarded as 1, FPR and FNR are 0')
+            dice, jaccard, precision, recall = 1, 1, 1, 1
+            fpr, fnr = 0, 0
+            
+        else:
+            dice = 2 * intersection_sum / (gdth_sum + pred_sum)
+            jaccard = intersection_sum / union_sum
 
-        fpr = fp / (fp + tn + smooth)
-        fnr = fn / (fn + tp + smooth)
-
-        jaccard = intersection_sum / (union_sum + smooth)
-        dice = 2 * intersection_sum / (gdth_sum + pred_sum + smooth)
-
+            
+            if pred_sum == 0:  # no positive prediction
+                logging.warning(f'Note: The prediction results of this image are all 0 while ground truth is not 0, so the precision is 0, recall is regarded as 0')
+                precision, recall = 0, 0  # 0
+                fnr = 1
+                fpr = 0
+            elif gdth_sum == 0:
+                logging.warning(f'Note: The ground truth of this image are all 0 while the prediction results are not 0, so the recall and FPR are 0, precision and FNR are regarded as 0')
+                precision, recall = 0, 0  # 0
+                fnr, fpr = 0, 0
+            else:
+                if (fp + tn) == 0: 
+                    logging.warning(f'Note: The ground truth of this image are all 1, so FPR is 0')
+                    fpr = 0
+                else:
+                    precision = tp / pred_sum
+                    recall = tp / gdth_sum
+                    fnr = fn / (fn + tp )
+                    fpr = fp / (fp + tn)
+                
+                
+       
         dicecomputer = sitk.LabelOverlapMeasuresImageFilter()
         dicecomputer.Execute(labelTrue > 0.5, labelPred > 0.5)
 
