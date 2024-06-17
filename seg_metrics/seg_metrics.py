@@ -302,7 +302,7 @@ def write_metrics(labels: Sequence,
     :param spacing: spacing of input images, a list of floating numbers with shape `(N, )` where `N` is the dimension of images.
     :param fully_connected: whether to apply fully connected border during the calculation of surface distance.
     :param TPTNFPFN: whether to return the number of voxels/pixels for true positive, false positive, true negative, false negative predictions. Default is `False`
-    :return: A dict or a list of dicts which store metrics
+    :return: A a list of dicts which store metrics for each pair of images
     """
     type_check(gdth_path, pred_path, gdth_img, pred_img)
     if not isinstance(labels, list):
@@ -396,10 +396,7 @@ def write_metrics(labels: Sequence,
             raise Exception(f"The metrics are None， because no files were detected in folder: {gdth_path} or folder: {pred_path}")
         # if gdth_img is not None:
         #     raise Exception(f"The metrics are None，because give image is None")
-    if len(output_list)==0:
-        return metrics_dict_all_labels
-    else:
-        return output_list
+    return output_list
 
 
 def main():
