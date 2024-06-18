@@ -173,9 +173,10 @@ def computeQualityMeasures(lP: np.ndarray,
         quality["stdsd"] = np.std(all_surface_distances)
         if len(all_surface_distances) == 0:  
             quality["hd95"] = 0
+            quality["hd"] = 0
         else:
             quality["hd95"] = np.percentile(all_surface_distances, 95)
-        quality["hd"] = np.max(all_surface_distances)
+            quality["hd"] = np.max(all_surface_distances)
     return quality
 
 
