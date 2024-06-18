@@ -2,3 +2,5 @@
 *.pyc
 *__pycache__**
 *docs/build*
+/build/
+/seg_metrics.egg-info

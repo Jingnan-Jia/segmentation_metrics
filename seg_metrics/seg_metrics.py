@@ -31,7 +31,8 @@ def computeQualityMeasures(lP: np.ndarray,
                            lT: np.ndarray,
                            spacing: np.ndarray,
                            metrics_names: Union[Sequence, set, None] = None,
-                           fullyConnected=True):
+                           fullyConnected=True,
+                           label: int = 0):
     """
 
     :param lP: prediction, shape (x, y, z)
@@ -81,7 +82,7 @@ def computeQualityMeasures(lP: np.ndarray,
         # smooth = 0.001
         
         if (gdth_sum + pred_sum) == 0:
-            logging.warning(f'Note: Both ground truth and prediction of the image are 0, dice, jaccard, precision and recall are regarded as 1, FPR and FNR are 0')
+            logging.warning(f'Note: Both ground truth and prediction of the image for label {label} are all 0, dice, jaccard, precision and recall are regarded as 1, FPR and FNR are 0')
             dice, jaccard, precision, recall = 1, 1, 1, 1
             fpr, fnr = 0, 0
             
@@ -91,17 +92,17 @@ def computeQualityMeasures(lP: np.ndarray,
 
             
             if pred_sum == 0:  # no positive prediction
-                logging.warning(f'Note: The prediction results of this image are all 0 while ground truth is not 0, so the precision is 0, recall is regarded as 0')
+                logging.warning(f'Note: The prediction results of this image for label {label} are all 0 while ground truth is not 0, so the precision is 0, recall is regarded as 0')
                 precision, recall = 0, 0  # 0
                 fnr = 1
                 fpr = 0
             elif gdth_sum == 0:
-                logging.warning(f'Note: The ground truth of this image are all 0 while the prediction results are not 0, so the recall and FPR are 0, precision and FNR are regarded as 0')
+                logging.warning(f'Note: The ground truth of this image for label {label} are all 0 while the prediction results are not 0, so the recall and FPR are 0, precision and FNR are regarded as 0')
                 precision, recall = 0, 0  # 0
                 fnr, fpr = 0, 0
             else:
                 if (fp + tn) == 0: 
-                    logging.warning(f'Note: The ground truth of this image are all 1, so FPR is 0')
+                    logging.warning(f'Note: The ground truth of this image for label {label} are all 1, so FPR is 0')
                     fpr = 0
                 else:
                     fpr = fp / (fp + tn)
@@ -168,15 +169,20 @@ def computeQualityMeasures(lP: np.ndarray,
         ref2seg_distances = ref2seg_distances + list(np.zeros(num_ref_surface_pixels - len(ref2seg_distances)))  #
 
         all_surface_distances = seg2ref_distances + ref2seg_distances
-        quality["msd"] = np.mean(all_surface_distances)
-        quality["mdsd"] = np.median(all_surface_distances)
-        quality["stdsd"] = np.std(all_surface_distances)
+
         if len(all_surface_distances) == 0:  
             quality["hd95"] = 0
             quality["hd"] = 0
+            quality["msd"] = 0
+            quality["mdsd"] = 0
+            quality["stdsd"] = 0
+            quality["vs"] = 1
         else:
             quality["hd95"] = np.percentile(all_surface_distances, 95)
             quality["hd"] = np.max(all_surface_distances)
+            quality["msd"] = np.mean(all_surface_distances)
+            quality["mdsd"] = np.median(all_surface_distances)
+            quality["stdsd"] = np.std(all_surface_distances)
     return quality
 
 
@@ -245,7 +251,7 @@ def get_metrics_dict_all_labels(labels: Sequence,
         metrics = computeQualityMeasures(pred_per, gdth_per,
                                          spacing=spacing,
                                          metrics_names=metrics_names,
-                                         fullyConnected=fullyConnected)
+                                         fullyConnected=fullyConnected, label=label)
 
         for k, v in metrics_dict_all_labels.items():
             if k in metrics_names:
