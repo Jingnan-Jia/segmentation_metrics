@@ -132,7 +132,11 @@ def computeQualityMeasures(lP: np.ndarray,
 
     if set(distance_metrics).intersection(metrics_names) or not metrics_names:
         # Surface distance measures
-        signed_distance_map = sitk.SignedMaurerDistanceMap(labelTrue > 0.5, squaredDistance=False,
+        if np.sum(lT) == 0:  # all 0, set the distance map to 0. Otherwise, SignedMaurerDistanceMap may raise exceptions.
+            signed_distance_map = sitk.GetImageFromArray(lT, isVector=False)
+            signed_distance_map.SetSpacing(spacing)
+        else:
+            signed_distance_map = sitk.SignedMaurerDistanceMap(labelTrue > 0.5, squaredDistance=False,
                                                            useImageSpacing=True)  # It need to be adapted.
 
         ref_distance_map = sitk.Abs(signed_distance_map)
@@ -145,17 +149,22 @@ def computeQualityMeasures(lP: np.ndarray,
 
         num_ref_surface_pixels = int(statistics_image_filter.GetSum())
 
-        signed_distance_map_pred = sitk.SignedMaurerDistanceMap(labelPred > 0.5, squaredDistance=False,
-                                                                useImageSpacing=True)
+
+        if np.sum(lP) == 0:  # all 0, set the distance map to 0. Otherwise, SignedMaurerDistanceMap may raise exceptions.
+            signed_distance_map_pred = sitk.GetImageFromArray(lP, isVector=False)
+            signed_distance_map_pred.SetSpacing(spacing)
+        else:
+            signed_distance_map_pred = sitk.SignedMaurerDistanceMap(labelPred > 0.5, squaredDistance=False,
+                                                                    useImageSpacing=True)
 
         seg_distance_map = sitk.Abs(signed_distance_map_pred)
 
         seg_surface = sitk.LabelContour(labelPred > 0.5, fullyConnected=fullyConnected)
         seg_surface_array = sitk.GetArrayViewFromImage(seg_surface)
 
-        seg2ref_distance_map = ref_distance_map * sitk.Cast(seg_surface, sitk.sitkFloat32)
+        seg2ref_distance_map = sitk.Cast(ref_distance_map, sitk.sitkFloat32) * sitk.Cast(seg_surface, sitk.sitkFloat32)
 
-        ref2seg_distance_map = seg_distance_map * sitk.Cast(ref_surface, sitk.sitkFloat32)
+        ref2seg_distance_map = sitk.Cast(seg_distance_map, sitk.sitkFloat32) * sitk.Cast(ref_surface, sitk.sitkFloat32)
 
         statistics_image_filter.Execute(seg_surface > 0.5)
 
@@ -414,12 +423,20 @@ def main():
     gdth_path = 'data/gdth'
     pred_path = 'data/pred'
     csv_file = 'metrics.csv'
-
-    write_metrics(labels=labels[1:],  # exclude background
-                  gdth_path=gdth_path,
-                  pred_path=pred_path,
-                  csv_file=csv_file)
-
+    
+    labels = [0, 1, 2, 3, 4]
+    gdth_img = np.array([[0,0,0], 
+                        [0,2,1]])
+    pred_img = np.array([[0,0,0], 
+                        [0,3,1]])
+    csv_file = 'metrics.csv'
+    spacing = [1, 1]
+    metrics = write_metrics(labels=labels[1:],  # exclude background if needed
+                    gdth_img=gdth_img,
+                    pred_img=pred_img,
+                    csv_file=csv_file,
+                    spacing=spacing)
+    print(metrics)
 
 if __name__ == "__main__":
     main()
