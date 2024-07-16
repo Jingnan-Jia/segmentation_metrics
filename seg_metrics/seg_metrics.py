@@ -112,10 +112,14 @@ def computeQualityMeasures(lP: np.ndarray,
                 fnr = fn / (fn + tp)
                     
                 
-                
-       
-        dicecomputer = sitk.LabelOverlapMeasuresImageFilter()
-        dicecomputer.Execute(labelTrue > 0.5, labelPred > 0.5)
+        v_pred = np.sum(labelPred > 0.5)
+        v_gdth = np.sum(labelTrue > 0.5)
+        if v_pred + v_gdth == 0: # prediction results and ground truth are all 0
+            vs = 0
+        else:
+            vs = 2 * (v_pred - v_gdth) / (v_pred + v_gdth)
+        # dicecomputer = sitk.LabelOverlapMeasuresImageFilter()
+        # dicecomputer.Execute(labelPred > 0.5, labelTrue > 0.5)
 
         quality["dice"] = dice
         quality["jaccard"] = jaccard
@@ -123,7 +127,7 @@ def computeQualityMeasures(lP: np.ndarray,
         quality["recall"] = recall
         quality["fnr"] = fnr
         quality["fpr"] = fpr
-        quality["vs"] = dicecomputer.GetVolumeSimilarity()
+        quality["vs"] = vs
 
         quality["TP"] = tp
         quality["TN"] = tn
